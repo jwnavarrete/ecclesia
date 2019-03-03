@@ -1,0 +1,66 @@
+.card-text{
+    margin-left: 10px;
+}
+
+.cardTable {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+}
+
+.cardTable li {
+    display: inline-table;
+    width: 285px;            
+    /*border: 1px #CCC solid;*/
+    /*padding: 10px;*/
+    margin: 3px;
+}
+
+.cardTable li p {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.dataTables_length {
+  width: 50%;  
+}
+
+.dataTables_filter {
+ width: 50%;  
+}
+.card-table{
+    width: 150px;height: 110px;float: right;display: inline-table;text-align: left;
+}        
+.card-image{
+    width: 105px;
+    height: 120px;
+    float: left;
+    margin-left: -10px;
+}
+
+.card-body .selected{outline: 2px solid #c7c9cc;}
+.editCard{margin-right: 10px;margin-top: 10px;float: right;color: black;}
+/*. cker__month-display, .picker__day-display, .picker__year-display{display: none}
+.picker__select--year {display: none}       */
+.avatar-pic {width: 150px;height: 150px; }
+
+
+
+.inline { 
+    display: inline-table;     
+}
+
+.fecha .btn{
+    padding: .75rem 1.14rem !important;
+}
+
+.fecha span button i {
+    margin-top: -6px !important;
+}
+
+.verticalButtons {
+    vertical-align: -35px;
+}
+
+.noDisplay{display: none}
