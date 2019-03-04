@@ -8,7 +8,7 @@ use DB;
 class Equipo extends Model
 {
 
-    protected $table = 'ici_Equipo';
+    protected $table = 'ici_equipo';
 
     protected $fillable = [
         'nombre', 'cargo',	'descripcion',	'foto',	'orden'
