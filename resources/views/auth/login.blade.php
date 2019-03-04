@@ -3,9 +3,6 @@
 @section('head')
     <link rel="stylesheet" href="/assets/css/signin.css">
     <link rel="stylesheet" href="/assets/css/parsley.css">
-    <style type="text/css">
-        .center {display: block;margin-left: auto;margin-right: auto;width: 50%;}
-    </style>
 @stop
 
 @section('content')
@@ -13,10 +10,6 @@
     <section class="mt-lg-5">
         
         {!! Form::open(['url' => url('login'), 'class' => 'form-signin', 'data-parsley-validate' ] ) !!}            
-            <div class="center">
-                <img src="/img/candado.jpg" class="img-fluid flex-center">
-            </div>
-            
             
             <div class="md-form">
                 <i class="fa fa-envelope prefix grey-text"></i>           
