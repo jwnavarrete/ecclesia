@@ -41,8 +41,8 @@ class CursosController extends Controller
         $usuarioId = auth()->user()->id;        
         
         $cursos = DB::table('ici_cursos')
-                    ->leftJoin('ici_usuario_x_curso', 'ici_Cursos.id', '=', 'ici_usuario_x_curso.cursoId')            
-                    ->select('ici_Cursos.capacidad',
+                    ->leftJoin('ici_usuario_x_curso', 'ici_cursos.id', '=', 'ici_usuario_x_curso.cursoId')            
+                    ->select('ici_cursos.capacidad',
                         DB::raw("(SELECT count(*) FROM ici_usuario_x_curso as a
                         WHERE a.cursoId = ici_usuario_x_curso.cursoId) as inscritos")
                     )->where('cursoId', '=', $request['id'])->first();
@@ -50,7 +50,7 @@ class CursosController extends Controller
         if ($cursos){            
             $id = $request['id'];
             if ($cursos->capacidad==$cursos->inscritos && $request['modo']=="ADD"){
-                $cursos = Cursos::select("ici_Cursos.*",
+                $cursos = Cursos::select("ici_cursos.*",
                 DB::raw("(SELECT 1 FROM ici_usuario_x_curso as a
                 WHERE a.usuarioId = $usuarioId
                 and a.cursoId=$id) as suscrito")      
@@ -144,7 +144,7 @@ class CursosController extends Controller
         
         //$cursos = Cursos::find($id);
 
-        $cursos = Cursos::select("ici_Cursos.*",
+        $cursos = Cursos::select("ici_cursos.*",
         DB::raw("(SELECT 1 FROM ici_usuario_x_curso as a
         WHERE a.usuarioId = $usuarioId
         and a.cursoId=$id) as suscrito")      
@@ -193,11 +193,11 @@ class CursosController extends Controller
         WHERE a.usuarioId = $usuarioId
         and a.cursoId=$id) as suscrito")      
         )->where('id','=',$id)->first();*/
-        $cursos = DB::table('ici_Cursos')
-            ->leftJoin('ici_usuario_x_curso', 'ici_Cursos.id', '=', 
+        $cursos = DB::table('ici_cursos')
+            ->leftJoin('ici_usuario_x_curso', 'ici_cursos.id', '=', 
                 DB::raw('ici_usuario_x_curso.cursoId AND ici_usuario_x_curso.usuarioId = ' . $usuarioId)
             )
-            ->select('ici_Cursos.*', 'ici_usuario_x_curso.usuarioId')->get();
+            ->select('ici_cursos.*', 'ici_usuario_x_curso.usuarioId')->get();
 
         return view('pages.cursos.inscripcionesCursos   ', compact('cursos'));
     }
