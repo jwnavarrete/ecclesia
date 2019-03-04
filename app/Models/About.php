@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class About extends Model
 {
-    protected $table = 'ici_About';
+    protected $table = 'ici_about';
     
     protected $fillable = [
         'name', 'titulo','enlace','panel',	'descripcion',	'foto',	'orden'
