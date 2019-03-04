@@ -4,5 +4,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Catalogo extends Model
 {
-    protected $table = 'ici_Catalogo';
+    protected $table = 'ici_catalogo';
 }
