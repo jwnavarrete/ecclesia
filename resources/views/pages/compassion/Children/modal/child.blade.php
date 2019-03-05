@@ -25,8 +25,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-2">
-                            <ul class="nav  md-pills pills-primary flex-column" role="tablist">
+                        <div class="col-md-1">
+                            <ul class="nav  md-pills pills-primary" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="tab-General"   data-toggle="tab" href="#general" role="tab">
                                     <i class="fa fa-address-card ml-2"></i>
@@ -54,7 +54,7 @@
                                 </li>                                   
                             </ul>
                         </div>
-                        <div class="col-md-10">                        
+                        <div class="col-md-11">                        
 
                             <!--YERSON ALBERTO CORTEZ CHICA
                                * SECCIONES DE INFORMACION QUE DEBE LLENAR EL ENCARGADO DEL REGISTRO DEL MENOR

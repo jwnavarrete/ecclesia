@@ -28,6 +28,8 @@
         * PAGINA PARA ADMINISTRAR A LOS MENORES DEL PROYECTO DE APADRINAMIENTO CASA AMANECER
     -->
 
+    
+
 
     <div class="col-lg-12">
         <div class="row">
@@ -87,5 +89,5 @@
     <script src="{{ asset('assets/js/validator.js') }}"></script>
     <script src="{{ asset('assets/js/compassion_child.js') }}"></script>
     <script src="{{ asset('assets/js/core.js') }}"></script>
-    <script src="{{ asset('assets/js/datepicker.js') }}"></script>
+    <script src="{{ asset('assets/js/datepicker.js') }}"></script>  
 @endpush

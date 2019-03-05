@@ -249,9 +249,9 @@
     
     <!--MIGUEL ANGEL CHAVEZ DELGADO
        *LIBRERIAS SCRIP
+       
     -->
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>        
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/mdb.min.js"></script>
 
@@ -265,8 +265,10 @@
         $('#myModal').on('shown.bs.modal', function () {
           $('#myInput').focus()
         })                
-
-
+       
+        
+        $('.dropdown-toggle').dropdown();
+        
         <?php if(Session::has('message')): ?>            
             alert('<?php echo e(Session::get("message")); ?>');                            
         <?php endif; ?>

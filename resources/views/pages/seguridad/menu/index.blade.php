@@ -62,67 +62,43 @@
         -->
         <div class="row">
             <div class="col-lg-4">
-                    <div class="card card-cascade narrower mb-r">
-    
-                        <div class="view gradient-card-header primary-color narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">                            
-                            <a href="" class="white-text mx-3">Crear Nuevo Menu</a>                            
-                        </div>
-    
-                        <!--Card content-->
-                        <div class="card-body pb-2">                        
-                    
-                            <div class="table-responsive">    
-                                <br>                    
-                                    <form>             
+                <div class="card">    
+                    <div class="card-body">  
+                        <h5 class="card-title">Nuevo Menu</h5>                
+                        <div class="table-responsive">                                     
+                                <form>             
 
-                                            <div class="md-form form-sm">
-                                                <input type="text" id="txtname" class="form-control form-control-sm">
-                                                <label for="name">Nombre:</label>
-                                            </div>
-                                            <div class="md-form form-sm">
-                                                <input type="text" id="txturl" class="form-control form-control-sm">
-                                                <label for="url">Url:</label>
-                                            </div>
-                                            <div class="md-form form-sm">
-                                                <input type="text" id="txticono" class="form-control form-control-sm">
-                                                <label for="url">Icono:</label>
-                                            </div>
-
-                                        
-                                    </form>
-                                                
-                            </div>
-    
-                            <div class="row">
-                                    <div class="col-md-12 text-center">
-                                        <div class="col-md-6 pull-right">
-                                            <a onclick="createMenu();" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Grabar</a>
+                                        <div class="md-form form-sm">
+                                            <input type="text" id="txtname" class="form-control form-control-sm">
+                                            <label for="name">Nombre:</label>
                                         </div>
-        
-                                    </div>
-                                </div>
-                                <br>                            
-        
+                                        <div class="md-form form-sm">
+                                            <input type="text" id="txturl" class="form-control form-control-sm">
+                                            <label for="url">Url:</label>
+                                        </div>
+                                        <div class="md-form form-sm">
+                                            <input type="text" id="txticono" class="form-control form-control-sm">
+                                            <label for="url">Icono:</label>
+                                        </div>
+
+                                    
+                                </form>
+                                            
                         </div>
-                        <!--/.Card content-->
-    
+                        <div class="row">
+                            <div class="col-md-12">                                
+                                <button type="button" onclick="createMenu();" class="btn btn-primary btn-sm waves-light waves-effect pull-right">Grabar</button>
+                            </div>
+                        </div>
                     </div>
-    
-                </div>
+                </div>    
+            </div>
                 
             <div class="col-lg-8">
-                 <div class="card card-cascade narrower mb-r">
-
-                    <div class="view gradient-card-header primary-color narrower py-2 mx-4 mb-3 d-flex justify-content-between align-items-center">                        
-                        <a href="" class="white-text mx-3">Listado de Menu</a>                        
-                    </div>
-
-                    <!--Card content-->
+                 <div class="card">                    
                     <div class="card-body pb-0">                        
-                 
-                        <div class="table-responsive">                    
-                                                        
-                                     
+                        <h5 class="card-title">Listado de Menu</h5>
+                        <div class="table-responsive">                                                         
                             <div class="panel-group" id="accordionMenu">                                  
                                 <ol class="sortable" id="menu">
                                     @foreach ($menu as $key => $item)
@@ -133,30 +109,21 @@
                                     @endforeach  
                                 </ol>                                            
                             </div> 
-
                         </div>
                         
                         <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <div class="col-md-3 pull-right">
-                                            <a onclick="GrabarOrden();" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Grabar</a>
-                                    </div>
-    
-                                </div>
+                            <div class="col-md-12">
+                                <button type="button" onclick="GrabarOrden();" class="btn btn-primary btn-sm waves-light waves-effect pull-right">Grabar</button>                                
                             </div>
-                            <br>                            
-    
+                        </div>
+
                     </div>
                     <!--/.Card content-->
 
                 </div>
-
             </div>            
         </div>
 
-        <!--Card-->
-
-        <!--/.Card-->
     </section>
 
    

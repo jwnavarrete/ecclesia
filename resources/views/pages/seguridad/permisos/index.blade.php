@@ -45,15 +45,11 @@
 -->
 
 <div class="row">
-   
-    <div class="col-lg-12">
-        <div class="row">
-            <div class="col-lg-12" style="margin-bottom: -20px;margin-top: -20px;">
-                <div class="btn-group btn-group-sm inline" style="vertical-align: -35px;">
-                    <a class="btn btn-primary" href="{{ URL::to('roles/create') }}" type="button" title="Nuevo apadrinado" id="MainToolbar_DXI0_"><span class="image fa fa-plus"></span></a>                    
-                    <button class="btn btn-primary" type="button" title="Imprimir" id="MainToolbar_DXI0_"><span class="image fa fa-print"></span></button>                                                                    
-                </div>            
-                <div class="md-form form-sm inline pull-right">                    
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Seleccionar Perfil</h5>                                
+                <div class="md-form form-sm">                    
                     <div class="md-form form-sm">
                             {!! Form::select('roles', $lista->getRoles(), 1 , [
                                 'placeholder' => 'Rol...',
@@ -67,20 +63,18 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-12 card">
-
-                @include('pages.seguridad.permisos.partial.opciones')                
+        </div>
+    </div>    
+    
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Listado de Permisos</h5>
+                @include('pages.seguridad.permisos.partial.opciones')
             </div>
-
-        
-            
-
-
-        </div>  
+        </div>
     </div>    
 </div>
-
 
 @stop
 
