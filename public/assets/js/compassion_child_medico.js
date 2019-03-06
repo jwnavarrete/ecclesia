@@ -157,7 +157,7 @@ function btnFilterExport(){
     
     return `<div class="btn-group btn-group-sm inline">                    
                 <div class="btn-group btn-group-sm inline">
-                    <button class="btn btn-primary dropdown-toggle" title="Filtrar" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="image fa fa-filter"></span></button>                                                
+                    <button class="btn btn-primary dropdown-toggle" title="Filtrar" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="image fa fa-filter"></span></button>
                     <div class="dropdown-menu">                                                                                                            
                         <a class="dropdown-item" href="#" onclick="filtro='T'; cargarDatatable();">Todos</a>                                
                         <a class="dropdown-item" href="#" onclick="filtro='M'; cargarDatatable();">Hombres</a>                                                        
@@ -180,6 +180,7 @@ function btnFilterExport(){
                 </div>
             </div> `;
 }
+
 function exportData(data){    
     $(".buttons-"+data).click();
 }
@@ -474,7 +475,6 @@ function validarChild(){
     MensajeError = "";
     if (!retorno){
         MensajeError = frmValidator.alertError();        
-        console.log(MensajeError);  
     }    
     
     if (MensajeError){

@@ -126,8 +126,7 @@ function cargaGrupo(codigo){
         dataType: "json",
         url: "/getGrupo",
         data: { codigo: codigo },
-        success: function( response ){ 
-            console.log(response.data);
+        success: function( response ){            
             if (continuaSession(response)) {                            
                 $("#hddCodigo").val(response.data.id).change();        
                 $("#nombre").val(response.data.nombre).change();        

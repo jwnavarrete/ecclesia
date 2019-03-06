@@ -7,7 +7,7 @@
 -->                                                                                                           
 <div class="tab-pane fade in show" id="horarios" role="tabpanel">    
     <div class="table-responsive">            
-        <table id="tblHorarios" class="table table-striped table-bordered table-sm">                
+        <table id="tblHorarios" class="table table-striped table-bordered dt-responsive nowrap">                
             <thead>
                 <tr>                    
                     <th style="width: 100px;">
@@ -59,8 +59,7 @@
             });
         });
 
-        function editHorario(data){     
-            console.log(data);                
+        function editHorario(data){            
             $('#lblModoHorario').html('Editar horario');            
             $('#txtIdHorario').val(data.id);                      
             $('#txtDiaHorario').val(data.dia);

@@ -86,7 +86,7 @@ function cargarDatatable(){
             destroy: true,         
             lengthMenu: [[6, 12,50, -1], [6,12,50, "Todo"]],           
             
-            columns: [                                                                                                                        
+            columns: [                                                         
                 {data: 'codigo', name: 'codigo',title:'Codigo' },
                 {data: 'nombreComun', name: 'nombreComun',title:'Nombre Comun' },
                 {data: 'primerNombre', name: 'primerNombre',title:'Nombre' },
@@ -98,13 +98,11 @@ function cargarDatatable(){
                     return (data=='M'?'Masculino':'Femenino');}
                 },
                 {data: "codigo","render": function(data, type, row, meta){                                                                          
-                    return `<div class="btn-group btn-group-sm inline">
-                    <button class="btn btn-primary waves-effect waves-light" onclick="cargaChild('${data}');" type="button" title="Editar"><span class="image fa fa-pencil"></span></button>                    
+                    return `<div class="btn-group btn-group-sm">
+                    <button class="btn btn-primary waves-effect waves-light" onclick="cargaChild('${data}');" type="button" title="Editar"><span class="image fa fa-pencil"></span></button>
                     <button class="btn btn-gplus waves-effect waves-light" onclick="eliminaChild('${data}');"  type="button" title="Eliminar"><span class="image fa fa-trash"></span></button>                                                                    
                 </div>`;
-                    // `<a type="button" onclick="cargaChild('${data}');" style="margin:0px;" class="btn-floating btn-sm btn-tw waves-effect waves-light"><i class="fa fa-pencil"></i></a>
-                    //<a type="button" style="margin:0px;" class="btn-floating btn-sm btn-gplus waves-effect waves-light"><i class="fa fa-trash"></i></a>`;
-                }} 
+                }},
             ],
             initComplete: function(settings, json) {                        
                 if(flag=="card"){                            
@@ -440,8 +438,7 @@ function validarChild(){
     retorno = frmValidator.formobj.onsubmit();        
     MensajeError = "";
     if (!retorno){
-        MensajeError = frmValidator.alertError();        
-        console.log(MensajeError);  
+        MensajeError = frmValidator.alertError();                
     }    
     
     if (MensajeError){

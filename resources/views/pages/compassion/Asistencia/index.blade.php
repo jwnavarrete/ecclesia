@@ -72,8 +72,7 @@
                 },
                 eventRender: function(event, element) {
                     //element.find(".fc-title").html(function () { return $(this).html().replace("Rs", "<i class='fa fa-inr'></i>")});
-                    if(event.id){
-                        console.log(event);          
+                    if(event.id){                        
                         //element.find(".fc-title").prepend(`<i onclick='demo("${event.id}")' class='fa fa-pencil'></i>  `);
                     }
                 },

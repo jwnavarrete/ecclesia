@@ -166,8 +166,7 @@
 
         $('#toHierarchy').click(function(e){
             hiered = $('ol.sortable').nestedSortable('toHierarchy', {startDepthCount: 0});
-            hiered = dump(hiered);
-            console.log(hiered);
+            hiered = dump(hiered);            
             //(typeof($('#toHierarchyOutput')[0].textContent) != 'undefined') ?
             //$('#toHierarchyOutput')[0].textContent = hiered : $('#toHierarchyOutput')[0].innerText = hiered;
         })
@@ -176,7 +175,6 @@
             arraied = $('ol.sortable').nestedSortable('toArray', {startDepthCount: 0});
             //arraied = $('ol.sortable').nestedSortable('toArray', {startDepthCount: 0});
             //arraied = dump(arraied);            
-            console.log(arraied);
             menuOrden(arraied);            
         })
 

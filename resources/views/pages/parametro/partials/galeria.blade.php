@@ -16,7 +16,7 @@
 	 </div>
 
     <div class="table-responsive">
-    	<table id="tblGaleria" class="table table-bordered table-sm" data-wow-delay=".4s">
+    	<table id="tblGaleria" class="table table-striped table-bordered dt-responsive nowrap" data-wow-delay=".4s">
             <thead class="thead-inverse">
             <tr>
                 <th><b>IMAGEN</b></th>                

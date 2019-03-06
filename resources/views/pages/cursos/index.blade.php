@@ -49,44 +49,47 @@
                         <!--WILMER WALTER NAVARRETE ALVAREZ
                            * TABLA PARA VISUALIZAR LOS CURSOS REGISTRADOS EN EL SISTEMA
                         -->
-                        <table id="tblCursos" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <td>ID</td>                                    
-                                    <td>Titulo</td>
-                                    <td>Detalle</td>
-                                    <td>Mestro</td>                                                                                
-                                    <td>Capacidad</td>                                            
-                                    <td>Estado</td>     
-                                    <td>Accion</td>                                            
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($cursos as $key => $value)
-                                <tr>
-                                    <td>{{ $value->id }}</td>                                    
-                                    <td>{{ $value->titulo }}</td>
-                                    <td>{{ $value->detalle }}</td>                                                
-                                    <td>{{ $value->maestro }}</td>
-                                    <td>{{ $value->capacidad}}</td>                                              
-                                    <td>{{ ($value->estado==1?'Activo':'Inacivo')}}</td>
+                        <div class="table-responsive">
+                            <table id="tblCursos" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <td>ID</td>                                    
+                                        <td>Titulo</td>
+                                        <td>Detalle</td>
+                                        <td>Mestro</td>                                                                                
+                                        <td>Capacidad</td>                                            
+                                        <td>Estado</td>     
+                                        <td>Accion</td>                                            
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($cursos as $key => $value)
+                                    <tr>
+                                        <td>{{ $value->id }}</td>                                    
+                                        <td>{{ $value->titulo }}</td>
+                                        <td>{{ $value->detalle }}</td>                                                
+                                        <td>{{ $value->maestro }}</td>
+                                        <td>{{ $value->capacidad}}</td>                                              
+                                        <td>{{ ($value->estado==1?'Activo':'Inacivo')}}</td>
 
-                                    <!--WILMER WALTER NAVARRETE ALVAREZ
-                                       * SECCION PARA LOS BOTONES DENTRO DE LA TABLA
-                                    -->                                        
-                                    <td width="120px">     
-                                        <div class="btn-group btn-group-sm inline">
-                                            <button  onclick="openWindows('cursos/'+{{$value->id}}+'/edit')" class="btn btn-primary waves-effect waves-light" type="button" title="Editar"><span class="image fa fa-pencil"></span></button>
+                                        <!--WILMER WALTER NAVARRETE ALVAREZ
+                                        * SECCION PARA LOS BOTONES DENTRO DE LA TABLA
+                                        -->                                        
+                                        <td width="120px">     
+                                            <div class="btn-group btn-group-sm inline">
+                                                <button  onclick="openWindows('cursos/'+{{$value->id}}+'/edit')" class="btn btn-primary waves-effect waves-light" type="button" title="Editar"><span class="image fa fa-pencil"></span></button>
 
-                                            <button class="btn btn-warning waves-effect waves-light" onclick="abrirModal('{{ $value->id }}');"  type="button" title="Editar"><span class="image fa fa-calendar"></span></button>
+                                                <button class="btn btn-warning waves-effect waves-light" onclick="abrirModal('{{ $value->id }}');"  type="button" title="Editar"><span class="image fa fa-calendar"></span></button>
 
-                                            <button class="btn btn-gplus waves-effect waves-light" onclick="remove({{$value->id}})" type="button" title="Eliminar"><span class="image fa fa-trash"></span></button>
-                                        </div>                                                           
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>          
+                                                <button class="btn btn-gplus waves-effect waves-light" onclick="remove({{$value->id}})" type="button" title="Eliminar"><span class="image fa fa-trash"></span></button>
+                                            </div>                                                           
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>          
+                        </div>
+                        
                     </div>                
                 </div>                
             </div>  

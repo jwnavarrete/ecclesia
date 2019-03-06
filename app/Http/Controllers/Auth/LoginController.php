@@ -102,7 +102,7 @@ class LoginController extends Controller
         ], $remember == 1 ? true : false)) {
 
             return redirect()->route('home')->with('status', 'success')                
-            ->with('message', 'bienvenido(a) '.$this->auth->user()->first_name);
+            ->with('message', 'bienvenido(a) '.$this->auth->user()->username);
 
         }
         else {

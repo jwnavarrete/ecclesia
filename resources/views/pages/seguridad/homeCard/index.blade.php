@@ -52,9 +52,10 @@
            * LISTADO DE ACCESOS DIRECTOS CREADOS EN EL SISTEMA
         -->
     	<div class="card">            
-            <div class="card-body  ">
-    			<table id="tblHomeCard" class="table table-striped table-bordered table-sm">					
-				</table>            
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="tblHomeCard" class="table table-striped table-bordered dt-responsive nowrap"></table>            
+                </div>    			
             </div>                
         </div>
 

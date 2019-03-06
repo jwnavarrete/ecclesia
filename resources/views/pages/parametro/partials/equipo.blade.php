@@ -7,7 +7,7 @@ use App\Models\Equipo;
 -->                          
 <div class="tab-pane fade in show" id="equipo" role="tabpanel">    
     <div class="table-responsive">            
-        <table id="tblEquipo" class="table table-striped table-bordered table-sm">                
+        <table id="tblEquipo" class="table table-striped table-bordered dt-responsive nowrap">                
             <thead>
                 <tr>                    
                     <th style="width: 100px;">
@@ -62,8 +62,7 @@ use App\Models\Equipo;
                 });
             });
 
-            function editEquipo(data){     
-                console.log(data);                
+            function editEquipo(data){                
                 $('#lblModo').html('Editar Equipo');                
                 $('#txtEstado').val("M");
                 $('#txtId').val(data.id);                                

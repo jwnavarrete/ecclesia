@@ -123,6 +123,6 @@ class SocialController extends Controller
         
         return redirect()->route('home')
         ->with('status', 'success')            
-        ->with('message', 'bienvenido(a) '.$user->name);
+        ->with('message', 'bienvenido(a) '.$user->username);
     }
 }

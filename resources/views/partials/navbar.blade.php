@@ -28,12 +28,17 @@
             <li class="nav-item">                        
                 <a class="nav-link waves-effect waves-light" onclick="openWindows('/')"><i class="fa fa-globe"></i> <span class="clearfix d-none d-sm-inline-block">Volver a la Web</span></a>
             </li>
-            @if(Auth::check())                    
-                <li class="nav-item">                        
-                    <a class="nav-link waves-effect waves-light" href="{{ url('logout') }}">
-                        <img src="{{URL::asset(Auth::user()->foto)}}" class="img-circle" height="25" width="25" alt="User Image"/> Salir
-                    </a>
-                </li>                            
+            @if(Auth::check())             
+                <li id="navbar-static-tools" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbar-tools" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        
+                        <img src="{{URL::asset(Auth::user()->foto)}}" class="img-circle" height="25" width="25" alt="User Image"/> {{Auth::user()->username}} </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbar-tools">
+                        <a class="dropdown-item waves-effect waves-light" href="#">Administrar Perfil</a>
+                        <a class="dropdown-item waves-effect waves-light" href="#">Cambiar Contraeña</a>
+                        <a class="dropdown-item waves-effect waves-light" href="{{ url('logout') }}">Salir</a>
+                    </div>
+                </li>                       
             @endif
         </ul>      
     </div>                  

@@ -93,7 +93,6 @@
             function grabarAsistencia() {
                 arrAsistencia = [];
                 $('.chkAsiste').each(function () {                    
-                    console.log(this.checked);                    
                     obj = {};
                     obj.asiste = (this.checked == true ? '1' : '0');
                     obj.idUsuario = this.id;

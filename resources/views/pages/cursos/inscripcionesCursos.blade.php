@@ -40,7 +40,7 @@
                             <!--WILMER WALTER NAVARRETE ALVAREZ
                                 * RECORREMOS EL ARREGLO DE LOS CURSOS Y LOS DIBUJAMOS POR PANTALLA
                             -->                                        
-                            <table id="tblCursos" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <table id="tblCursos" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <td>ID</td>

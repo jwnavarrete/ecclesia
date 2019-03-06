@@ -48,7 +48,7 @@
                            RECORREMOS ROLES Y PINTAMOS LA TABLA
                         -->
                         <div class="table-responsive">
-                            <table id="tblRoles" class="table-bordered display-compact table-sm" cellspacing="0" width="100%">
+                            <table id="tblRoles" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <td>ID</td>

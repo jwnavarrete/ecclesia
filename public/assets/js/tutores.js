@@ -162,8 +162,7 @@ function cargaTutor(codigo){
         dataType: "json",
         url: "/getTutor",
         data: { codigo: codigo },
-        success: function( response ){ 
-            console.log(response.data);
+        success: function( response ){            
             if (continuaSession(response)) {                            
                 $("#cedula").val(response.data.cedula).change();        
                 $("#fechaNacimiento").val(response.data.fechaNacimiento).change();

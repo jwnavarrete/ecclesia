@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="table-responsive">
-                                <table id="tblCompassion" class="table-bordered display-compact table-sm"    cellspacing="0" width="100%">
+                                <table id="tblCompassion" class="table table-striped table-bordered dt-responsive nowrap"    cellspacing="0" width="100%">
                                 </table>
                             </div>
                         </div>                

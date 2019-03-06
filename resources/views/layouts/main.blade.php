@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/frontend-all-demo.css') }}">    
     <link rel="stylesheet" href="{{ asset('assets/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/select.bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery-confirm.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/menuSortable.css') }}">
@@ -72,9 +73,16 @@
     * LIBRERIAS SCRIPTS USADOS EN TODO EL PROYECTO
 -->
 <script src="/assets/js/jquery.min.js"></script>
+
 <script src="/assets/js/popper.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 
+<script
+src="https://code.jquery.com/jquery-3.2.1.js"
+integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <script src="/assets/js/mdb.min.js"></script>
 <script src="/assets/js/compiled.min.js"></script>
@@ -87,6 +95,10 @@
 <script src="/assets/js/jquery.mjs.nestedSortable.js"></script>
 <script src="{{ asset('assets/js/dataTables.buttons.min.js') }}"></script>
 <script src="{{ asset('assets/js/buttons.bootstrap4.min.js') }}"></script>
+
+<script src="{{ asset('assets/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/js/responsive.bootstrap4.min.js') }}"></script>
+
 <script src="{{ asset('assets/js/jszip.min.js') }}"></script>
 <script src="{{ asset('assets/js/pdfmake.min.js') }}"></script>
 <script src="{{ asset('assets/js/buttons.html5.min.js') }}"></script>

@@ -202,7 +202,7 @@
                 },
                 eventRender: function(event, element) {                    
                     if(event.id){
-                        console.log(event);                                  
+                                                
                     }
                 },
                 bootstrapFontAwesome: {

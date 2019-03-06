@@ -7,7 +7,7 @@ use App\Models\Ministerio;
 -->                                                                                             
 <div class="tab-pane fade in show" id="ministerio" role="tabpanel">
     <div class="table-responsive">
-        <table id="tblMinisterios" class="table table-striped table-bordered table-sm">                
+        <table id="tblMinisterios" class="table table-striped table-bordered dt-responsive nowrap">                
             <thead>
                 <tr>                    
                     <th class="font-weight-bold" style="width: 100px;">
@@ -68,8 +68,7 @@ use App\Models\Ministerio;
         });
         
 
-        function editMinisterio(data){     
-            console.log(data);                
+        function editMinisterio(data){            
             $('#ministerioLbl').html('Editar Ministerio');                
             $('#ministerioEstado').val("M");
             $('#ministerioId').val(data.id);                                

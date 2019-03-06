@@ -70,7 +70,7 @@
                             <ul class="cardTable" id="new-list" style="display: none;" />    
                         </div>
                         <div class="table-responsive">
-                            <table id="tblTutores" class="table-bordered display-compact table-sm"    cellspacing="0" width="100%">
+                            <table id="tblTutores" class="table table-striped table-bordered dt-responsive nowrap"    cellspacing="0" width="100%">
                             </table>                            
                         </div>
                         

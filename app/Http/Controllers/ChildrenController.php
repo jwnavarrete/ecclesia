@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Validator;
 use App\Models\Compassion_child;
 use App\Models\GrupoChild;
-
 use DB;
 
 
@@ -54,11 +53,11 @@ class ChildrenController extends Controller
                 $foto =  $arrDatos['codigo'] . "." . $file->getClientOriginalExtension();            
                 $file->move('./img/compassion/', $foto);                
                 $arrDatos['foto'] = $foto;
-            }    
-                        
+            }                            
                         
             $arrDatos['fechaNacimiento'] = date('Y-m-d', strtotime($arrDatos['fechaNacimiento']));
             
+            $actividades = $arrDatos['actividades'];
             $arrDatos['actividades'] = json_encode($arrDatos['actividades']);
             $arrDatos['obligaciones'] = json_encode($arrDatos['obligaciones']);
             $arrDatos['pasatiempos'] = json_encode($arrDatos['pasatiempos']);
@@ -70,11 +69,11 @@ class ChildrenController extends Controller
             $arrDatos['padrenatural'] = json_encode($arrDatos['padrenatural']);
             $arrDatos['madrenatural'] = json_encode($arrDatos['madrenatural']);
             $arrDatos['hermanoscompassion'] = json_encode($arrDatos['hermanoscompassion']);
-                                
+            
             $arrWhere['codigo'] = $arrDatos['codigo'];
             
             Compassion_child::updateOrCreate($arrWhere, $arrDatos);
-                        
+            
             return response()->json(["message" => "" ,"estado"=>0,"message"=>"Realizado con Exito!"]);
         
         }catch (\Exception $e){
@@ -84,6 +83,15 @@ class ChildrenController extends Controller
 
     }
 
+    public function insertDetalleChild($child, $data, $arrDatos){
+        try {
+            //code...
+            
+
+        }catch (\Exception $e){
+            return response()->json(["message" => "" ,"estado"=>1,"message"=>$e->getMessage()]);                       
+        }
+    }
 
     public function listaChildren(Request $request){
         try{
@@ -92,7 +100,7 @@ class ChildrenController extends Controller
                 $arrChilds = Compassion_child::all()->toArray();            
             }else{                
                 $arrChilds = Compassion_child::where('sexo','=',$request->filtro)->get();                            
-            }
+            }            
             
             return response()->json(["message" => "" ,"estado"=>0,"data"=>$arrChilds]);
         }catch (\Exception $e){
@@ -119,7 +127,7 @@ class ChildrenController extends Controller
     public function deleteChild(Request $request)
     {
         try{            
-            Compassion_child::get()->where('codigo','=', $request->codigo)->first()->delete();                        
+            Compassion_child::get()->where('codigo','=', $request->codigo)->first()->delete();
 
             return response()->json(["message" => "Eliminado con exito!" ,"estado"=>0]);
         }catch (\Exception $e){

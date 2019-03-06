@@ -48,7 +48,7 @@
                             * SECCION DONDE SE MUESTRA EL LISTADO DE LOS USUARIOS
                         -->
                         <div class="table-responsive">
-                            <table id="tblUsuario" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%"> 
+                            <table id="tblUsuario" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%"> 
                             </table>
                         </div>
                     </div>                
@@ -93,16 +93,14 @@
 
         $('#btnEdit').on('click', function () {
             if(seleccionado()){
-                var data = tblUsuario.row('tr.selected' ).data();
-                console.log(data);
+                var data = tblUsuario.row('tr.selected' ).data();                
                 $(location).attr('href', 'usuarios/'+data.id);
             }
         });
 
         $('#tblUsuario tbody').on( 'click', '.btn_Editar', function () {
             var data = tblUsuario.row( $(this).parents('tr') ).data();
-            $(location).attr('href', 'usuarios/'+data.id);
-            //console.log(data);
+            $(location).attr('href', 'usuarios/'+data.id);            
         });
 
         $('#tblUsuario tbody').on( 'click', '.btn_Eliminar', function () {

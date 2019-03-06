@@ -9,7 +9,7 @@
 -->
 <div class="tab-pane fade" id="about" role="tabpanel">        
     <div class="table-responsive">
-        <table id="tblAbout" class="table table-striped table-bordered table-sm">            
+        <table id="tblAbout" class="table table-striped table-bordered dt-responsive nowrap">            
             <thead>
                 <tr>
                     <th class="font-weight-bold" style="width: 50px;">
@@ -71,9 +71,7 @@
             });
         });
 
-        function editAbout(data){     
-            console.log(data);                
-            
+        function editAbout(data){            
             $('#aboutlbl').html('Editar About');                
             $('#aboutEstado').val("M");
             $('#aboutId').val(data.id);                                
