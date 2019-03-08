@@ -11,16 +11,26 @@
         <!-- Card body -->
         <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
             <div class="card-body">
-                {!! Form::select('enfermedades', $lista->getOptionsByData("ENFE") , null , [                
-                    'required',
-                    'multiple',
-                    'id' => 'enfermedades',
-                    'searchable' => 'Buscar aqui...',
-                    'data-parsley-required-message' => 'Pasatiempos es requirda',
-                    'data-parsley-trigger'          => 'change focusout',
-                    "class"=>"mdb-select"]
-                ) !!}                                    
+                <div class="col-md-12">                
+                    {!! Form::select('enfermedades', $lista->getOptionsByData("ENFE") , null , [                
+                        'required',
+                        'multiple',
+                        'id' => 'enfermedades',
+                        'searchable' => 'Buscar aqui...',
+                        'data-parsley-required-message' => 'Pasatiempos es requirda',
+                        'data-parsley-trigger'          => 'change focusout',
+                        "class"=>"mdb-select"]
+                    ) !!}                                    
+                </div>
+
+                <div class="col-md-6">
+                    <div class="md-form form-sm">
+                        <input type="text" id="otraEnfermedad" placeholder="" name="otraEnfermedad" class="form-control">
+                        <label for="otraEnfermedad" >Otra:</label>  
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 
@@ -34,26 +44,25 @@
         </div>                                        
         <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
             <div class="card-body">
+
                 <table class="table table-bordered table-sm">                                         
                     <tbody>
                         @foreach ($arrSalud as $index => $salud)
                             <tr>                                                        
-                                <td>{{ $salud->nombre }}</td>
-                                <td>{{ $salud->descripcion }}</td>                                                    
-                                <td scope="row">
-                                    <div class="switch">
-                                        <label>
-                                            No
-                                            <input class="chkCompassion" name="chkLesion" id="{{$salud->id}}" value="{{$salud->id}}" type="checkbox">
-                                            <span class="lever"></span>
-                                            Si
-                                        </label>
-                                    </div>                                                                
-                                </td>
+                                <td>{{ $salud->nombre }}</td>                                
+                                <td>
+                                    <select searchable="Buscar aqui" class="mdb-select" id="{{str_replace(' ', '_', $salud->nombre)}}">
+                                            <option value="" selected>Ninguna</option>
+                                        @foreach(explode(',', $salud->descripcion ) as $info) 
+                                            <option value="{{$info}}" >{{$info}}</option>
+                                        @endforeach                                            
+                                    </select>
+                                </td>                                
                             </tr>                                                                                                    
                         @endforeach                                                                                   
                     </tbody>                                                                                    
                 </table>
+              
             </div>
         </div>
     </div>
@@ -68,22 +77,19 @@
         </div>
         <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordionEx">
             <div class="card-body">
+                
                 <table class="table table-bordered table-sm">                                         
                     <tbody>                                                
-                            <tr>                                                        
-                                <td>Habla</td>
-                                <td>Tiene defecto, Mudo</td>                                                    
-                                <th scope="row">
-                                    <div class="switch">
-                                        <label>
-                                            No
-                                            <input class="chkCompassion" name="chkHabla" id="chkHabla" type="checkbox">
-                                            <span class="lever"></span>
-                                            Si
-                                        </label>
-                                    </div>                                                                
-                                </th>
-                            </tr>                                                                                                                                                                                                                                    
+                        <tr>                                                        
+                            <td>Habla</td>
+                            <td>
+                                <select searchable="Buscar aqui" class="mdb-select" id="habla">
+                                    <option value="">Ninguna</option>
+                                    <option value="Tiene defecto">Tiene defecto</option>
+                                    <option value="Mudo">Mudo</option>
+                                </select>
+                            </td>                                                                                    
+                        </tr>                                                                                                                                                                            
                     </tbody>                                                                                    
                 </table>
             </div>
@@ -105,17 +111,14 @@
                         @foreach ($arrOido as $index => $oido)
                             <tr>                                                        
                                 <td>{{ $oido->nombre }}</td>
-                                <td>{{ $oido->descripcion }}</td>                                                    
-                                <th scope="row">
-                                    <div class="switch">
-                                        <label>
-                                            No
-                                            <input class="chkCompassion" name="chkOido" value="{{$oido->id}}" id="{{$oido->id}}" type="checkbox">
-                                            <span class="lever"></span>
-                                            Si
-                                        </label>
-                                    </div>                                                                
-                                </th>
+                                <td>
+                                    <select searchable="Buscar aqui" class="mdb-select" id="{{str_replace(' ', '_', $oido->nombre)}}">
+                                            <option value="" selected>Ninguna</option>
+                                        @foreach(explode(',', $oido->descripcion ) as $info) 
+                                            <option value="{{$info}}" >{{$info}}</option>
+                                        @endforeach                                            
+                                    </select>
+                                </td>                                
                             </tr>                                                                                                    
                         @endforeach                                                                                   
                     </tbody>                                                                                    
@@ -139,17 +142,14 @@
                         @foreach ($arrOjo as $index => $vista)
                             <tr>                                                        
                                 <td>{{ $vista->nombre }}</td>
-                                <td>{{ $vista->descripcion }}</td>                                                    
-                                <th scope="row">
-                                    <div class="switch">
-                                        <label>
-                                            No
-                                            <input class="chkCompassion" name="chkVista" id="{{$vista->id}}" value="{{$vista->id}}"  type="checkbox">
-                                            <span class="lever"></span>
-                                            Si
-                                        </label>
-                                    </div>                                                                
-                                </th>
+                                <td>
+                                    <select searchable="Buscar aqui" class="mdb-select" id="{{str_replace(' ', '_', $vista->nombre)}}">
+                                            <option value="" selected>Ninguna</option>
+                                        @foreach(explode(',', $vista->descripcion ) as $info) 
+                                            <option value="{{$info}}" >{{$info}}</option>
+                                        @endforeach                                            
+                                    </select>
+                                </td>
                             </tr>                                                                                                    
                         @endforeach                                                                                   
                     </tbody>                                                                                    
@@ -158,3 +158,4 @@
         </div>
     </div>
 </div>                                        
+

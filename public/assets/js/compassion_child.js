@@ -29,29 +29,26 @@ $(document).ready(function() {
     $('.mdb-select').removeClass('form-control form-control-sm');
     $('.dataTables_filter').find('label').remove();
 
-            
-    var chip = {
-        tag: 'chip content',
-        image: '', //optional
-        id: 1, //optional
-    };
+        
 
-    $('.chips-placeholder').material_chip({            
+    test = [{tag: 'Tag 1',}, {tag: 'Tag 2',}, {tag: 'Tag 3',}];
+
+    $('.chips').material_chip({            
         secondaryPlaceholder: '+ Hermanos',            
-        //data: [{tag: 'Tag 1',}, {tag: 'Tag 2',}, {tag: 'Tag 3',}],
+        //data: test,
     });
 
-    $('.chips-placeholder').on('chip.add', function(e, chip){
+    $('.chips').on('chip.add', function(e, chip){
         
     // you have the added chip here
     });
 
-    $('.chips-placeholder').on('chip.delete', function(e, chip){
+    $('.chips').on('chip.delete', function(e, chip){
         
     // you have the deleted chip here
     });
 
-    $('.chips-placeholder').on('chip.select', function(e, chip){
+    $('.chips').on('chip.select', function(e, chip){
         
     // you have the selected chip here
     });
@@ -71,7 +68,7 @@ $(document).ready(function() {
     $( "#apellidom" ).keyup(function() {        
         $("#lblapellido2").html($(this).val());        
     });
-
+    
 });
 
 function cargarDatatable(){        
@@ -282,18 +279,12 @@ function cargaChild(codigo){
                     $("input[type=checkbox][name='chkMadreNatural'][value="+value+"]").prop("checked",true);
                 });
 
-                
-                var dataTag = {
-                    tag:'john'
-                }                
-
-                $('.chips-placeholder').material_chip({            
-                    secondaryPlaceholder: '+ Hermanos',            
-                    data: dataTag //[{tag: 'Tag 1',}, {tag: 'Tag 2',}, {tag: 'Tag 3',}],
+                $('#hermanosCompassion').material_chip({
+                    'data': arrHermanos
                 });
                 
-                $('.chips').material_chip();
                 
+                console.log(arrHermanos);
                 
                 if (response.data.defectohabla == "S"){
                     $('#chkHabla').prop('checked',true);
@@ -460,8 +451,8 @@ function grabarDatos(){
         var arrOido = [];
         var arrVista = [];        
         var arrPadreNatural = [];        
-        var arrMadreNatural = [];                
-
+        var arrMadreNatural = [];    
+        
         $("[name='chkLesion']:checked").each(function () {
             arrLesion.push($(this).val());
         });

@@ -6,6 +6,7 @@
     $arrOjo = $lista->getCatalogoByData("OJO");     
     $arrNiveles = $lista->getCatalogoByData("EDU");         
     
+    
 @endphp
 
 <!--YERSON ALBERTO CORTEZ CHICA

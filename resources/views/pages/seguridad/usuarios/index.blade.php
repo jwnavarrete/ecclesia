@@ -100,6 +100,7 @@
 
         $('#tblUsuario tbody').on( 'click', '.btn_Editar', function () {
             var data = tblUsuario.row( $(this).parents('tr') ).data();
+            console.log(data);
             $(location).attr('href', 'usuarios/'+data.id);            
         });
 

@@ -110,7 +110,8 @@ function cargarDatatable(){
                 if(flag=="card"){     
                     $('#new-list').empty();
                 }                  
-            }
+            },
+            
         });
 
         /*$('#tblCompassion tbody').on( 'click', 'tr', function () {
