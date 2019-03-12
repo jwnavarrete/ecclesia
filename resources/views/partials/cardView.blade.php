@@ -1,8 +1,8 @@
 <!-- LUIS ALFREDO LLAQUE GAIBOR
     * RECORRE TODOS LOS ACCESOS DIRECTOS ASIGNADOS AL USUARIO Y LOS MUESTRA EN LA PANTALLA PRINCIPAL
 -->
-<div class="row">
-
+<div class="row">    
+    
     @foreach($lista->getCard() as $key => $card)                    
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card">
@@ -26,6 +26,12 @@
             </div>
         </div>            
     @endforeach
-    
+
 </div>
 
+
+@push('scripts')
+    <script>                
+                
+    </script>
+@endpush

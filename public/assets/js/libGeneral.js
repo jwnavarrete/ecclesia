@@ -33,3 +33,26 @@ function deleteConfirm(callback){
 function openWindows(url){
     window.location.href = url; 
 }
+
+function getValueSelectedByName(name){    
+    return $(`input[type=checkbox][name='${name}']:checked`).map(function () {
+        return this.value;
+    }).get();
+}
+
+function setValueByName(name, arrDatos){
+    if (!$.isEmptyObject(arrDatos)){
+        $.each(arrDatos, function( index, value ) {
+            $(`input[type=checkbox][name='${name}'][value="${value}"]`).prop("checked",true);        
+        });
+    }
+}
+
+function jsonParse(data){
+    if (!$.isEmptyObject(data)){                    
+        return JSON.parse(data);        
+    }else{
+        return [];
+    }
+}
+

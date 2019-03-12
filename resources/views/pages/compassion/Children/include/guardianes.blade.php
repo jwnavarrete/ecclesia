@@ -22,16 +22,12 @@
             <div class="card-body">
                 <div class="col-lg-12">     
                     <label>El niño esta viviendo bajo la tutela de:</label>          
-            
-                    {!! Form::select('encargados', $lista->getOptionsByData("GUAR") , null , [                
-                        'required',
-                        'multiple',
-                        'id' => 'encargados',
-                        'searchable' => 'Buscar aqui...',
-                        'data-parsley-required-message' => 'Encargados es requirda',
-                        'data-parsley-trigger'          => 'change focusout',
-                        "class"=>"mdb-select"]
-                    ) !!}                    
+                    
+                    @include('partials.elements.checkList', [ 
+                        'data' => 'GR',
+                        'name' => 'chkEncargados',
+                        'column' => '4',
+                    ])
                         
                 </div>
             </div>
@@ -121,245 +117,69 @@
                     </div>
                                 
                     <div class="row">
-                        <div class="col-lg-12">                                  
+
+                        @include('partials.elements.tableCheckList', [ 
+                            'data' => 'PNM',
+                            'titulo' => 'PADRE NATURAL',
+                            'name' => 'chkPadreNatural',
+                            'column' => '6',
+                        ])
+                        
+                        @include('partials.elements.tableCheckList', [ 
+                            'data' => 'PNF',
+                            'titulo' => 'MADRE NATURAL',
+                            'name' => 'chkMadreNatural',
+                            'column' => '6',
+                        ])
+                        
+                    </div>
+                        
+                    <div class="row">                        
+
+                        @include('partials.elements.tableRadioList', [ 
+                            'data' => 'OGRM',
+                            'titulo' => 'PADRE O GUARDIAN',
+                            'name' => 'rdbPadreGuardian',
+                            'column' => '6',
+                        ])
+
+                        @include('partials.elements.tableRadioList', [ 
+                            'data' => 'OGRF',
+                            'titulo' => 'MADRE O GUARDIAN',
+                            'name' => 'rdbMadreGuardian',
+                            'column' => '6',
+                        ])
+                        
+                         
+
+                        <div class="col-md-12">
                             <table class="table table-bordered table-sm">                                         
                                 <thead>
                                     <tr>
-                                        <th>Padre Natural</th>                        
-                                        <th>Madre Natural</th>
+                                        <th>Escoja en todas las que describa al padre o guardian</th>
+                                        <th>Escoja en todas las que describa a la madre o guardiana</th>
                                     </tr>
                                 </thead>
                                 <tbody>                                                
                                     <tr>                                                        
-                                        <td>                    
-                                            <label class="form-check-label" for="defaultCheckbox1">Es o (esta) el padre natural vivo?</label>          
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkPadreNatural" class="chkCompassion" value="vivo" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>                                                                                                                    
-                                        </td>                                                        
-                                        <td>                    
-                                            <label class="form-check-label" for="defaultCheckbox1">Es o (esta) la madre natural viva?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkMadreNatural" class="chkCompassion" value="vivo" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>                                                        
+                                        <td>
+                                            @include('partials.elements.checkList', [ 
+                                                'data' => 'AGRM',
+                                                'name' => 'chkActividaGuardian',
+                                                'column' => '6',
+                                            ])
                                         </td>                                
-                                    </tr>                                                                                           
-                                    <tr>
                                         <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">Viviendo con este niño?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkPadreNatural" class="chkCompassion" value="viviendo" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>                                      
-                                        </td>
-                                        <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">Viviendo con este niño?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkMadreNatural" class="chkCompassion" value="viviendo" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>                                                              
-                                        </td>
+                                            @include('partials.elements.checkList', [ 
+                                                'data' => 'AGRF',
+                                                'name' => 'chkActividaGuardiana',
+                                                'column' => '6',
+                                            ])
+                                        </td>                                
                                     </tr>    
-                                    <tr>
-                                        <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">Contribuyendo financieramente con este niño?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkPadreNatural" class="chkCompassion" value="contribuye" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>                                      
-                                        </td>
-                                        <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">Contribuyendo financieramente con este niño?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkMadreNatural" class="chkCompassion" value="contribuye" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>                                           
-                                        </td>
-                                    </tr>                                                                                                      
-                                    <tr>
-                                        <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">Con impedimento, de que clase?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkPadreNatural" class="chkCompassion" value="impedimento" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>                                 
-                                        </td>
-                                        <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">Con impedimento, de que clase?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkMadreNatural" class="chkCompassion" value="impedimento" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>         
-                                        </td>
-                                    </tr>   
-                                    <tr>
-                                        <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">Crónicamente enfermo, de que?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkPadreNatural" class="chkCompassion" value="enfermo" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>                                 
-                                        </td>
-                                        <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">Crónicamente enfermo, de que?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkMadreNatural" class="chkCompassion" value="enfermo" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>              
-                                        </td>
-                                    </tr>                                                                                       
-                                    <tr>
-                                        <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">Mentalmente enfermo?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkPadreNatural" class="chkCompassion" value="mental" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>                                                
-                                        </td>
-                                        <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">Mentalmente enfermo?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkMadreNatural" class="chkCompassion" value="mental" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>              
-                                        </td>
-                                    </tr>                                                                             
-                                    <tr>
-                                        <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">En la carcel?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkPadreNatural" class="chkCompassion" value="carcel" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>                                     
-                                        </td>
-                                        <td>
-                                            <label class="form-check-label" for="defaultCheckbox1">En la carcel?</label>
-                                            <div class="switch">                            
-                                                <label>
-                                                    No
-                                                    <input name="chkMadreNatural" class="chkCompassion" value="carcel" type="checkbox">
-                                                    <span class="lever"></span>
-                                                    Si
-                                                </label>
-                                            </div>                                     
-                                        </td>
-                                    </tr>                                                                                                           
-                                </tbody>                                                                                    
+                                </tbody>
                             </table>
-                    
-                        </div>     
-                    </div>
-                        
-                    <div class="row">
-                        <div class="col-lg-12">                                        
-                            <div class="md-form form-sm">                
-                                <table class="table table-bordered table-sm">                                         
-                                    <thead>
-                                        <tr>
-                                            <th>Padre o Guardian</th>
-                                            <th>Madre o Guardian</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>                                                
-                                        <tr>                                                        
-                                            <td>
-                                                <input class="form-check-input rdbCompassion" id="rdbPadreGuardian-1"    type="radio" name="rdbPadreGuardian" value="0">
-                                                <label class="form-check-label" for="rdbPadreGuardian-1">El padre o guardian masculino se emplea regularmente</label>     
-                                            </td>                                
-                                            <td>
-                                                <input class="form-check-input rdbCompassion" type="radio" id="rdbMadreGuardian-1" name="rdbMadreGuardian" value="0">
-                                                <label class="form-check-label" for="rdbMadreGuardian-1">La madre o guardiana es epleada regularmente</label>     
-                                            </td>                                
-                                        </tr>    
-                                        <tr>                                                        
-                                            <td>
-                                                <input class="form-check-input rdbCompassion" id="rdbPadreGuardian-2" type="radio" name="rdbPadreGuardian"  value="1">
-                                                <label class="form-check-label" for="rdbPadreGuardian-2">El padre o guardian esta empleado a veces</label>  
-                                            </td>                                
-                                            <td>
-                                                <input class="form-check-input rdbCompassion" id="rdbMadreGuardian-2" type="radio" name="rdbMadreGuardian" value="1">
-                                                <label class="form-check-label" for="rdbMadreGuardian-2">La madre o guardian esta empleado a veces</label>  
-                                            </td>
-                                        </tr>    
-                                        <tr>                                                        
-                                            <td>
-                                                <input class="form-check-input rdbCompassion" id="rdbPadreGuardian-3" type="radio" name="rdbPadreGuardian" value="2">
-                                                <label class="form-check-label" for="rdbPadreGuardian-3">El padre o guardian no esta empleado</label>  
-                                            </td>
-                                            <td>
-                                                <input class="form-check-input" type="radio" id="rdbMadreGuardian-3" name="rdbMadreGuardian" value="2">
-                                                <label class="form-check-label" for="rdbMadreGuardian-3">La madre o guardian no esta empleada</label>  
-                                            </td>                                
-                                        </tr>   
-                                        <tr>                                                        
-                                            <td>
-                                                <input class="form-check-input rdbCompassion" id="rdbPadreGuardian-4" type="radio" name="rdbPadreGuardian" value="3">
-                                                <label class="form-check-label" for="rdbPadreGuardian-4">No hay padre o guardian</label>                                  
-                                            </td>                        
-                                            <td>
-                                                <input class="form-check-input rdbCompassion" id="rdbMadreGuardian-4" type="radio" name="rdbMadreGuardian" value="3">
-                                                <label class="form-check-label" for="rdbMadreGuardian-4">No hay madre o guardian</label>  
-                                            </td>                                
-                                        </tr>                                                                                                                                                                                                                                     
-                                    </tbody>                                                                                    
-                                </table>
-                                
-                            </div>
-                        </div>     
+                        </div>
                     </div>
         
                 </div>
@@ -401,7 +221,7 @@
                         <div class="col-lg-12">        
                             <span>Hermanos y hermanas registrados en Compassion</span>                                
                             <div class="md-form form-sm">                       
-                                <div id="hermanosCompassion" class="chips chips-placeholder"></div>
+                                <div id="hermanosCompassion" class=""></div>
                             </div>        
                         </div>                   
                     </div>                    

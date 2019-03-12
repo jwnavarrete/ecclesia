@@ -11,16 +11,12 @@
         <!-- Card body -->
         <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
             <div class="card-body">
-                <div class="col-md-12">                
-                    {!! Form::select('enfermedades', $lista->getOptionsByData("ENFE") , null , [                
-                        'required',
-                        'multiple',
-                        'id' => 'enfermedades',
-                        'searchable' => 'Buscar aqui...',
-                        'data-parsley-required-message' => 'Pasatiempos es requirda',
-                        'data-parsley-trigger'          => 'change focusout',
-                        "class"=>"mdb-select"]
-                    ) !!}                                    
+                <div class="col-md-12">                    
+                    @include('partials.elements.checkList', [ 
+                        'data' => 'ENF',
+                        'name' => 'chkSalud',
+                        'column' => '4',
+                    ])
                 </div>
 
                 <div class="col-md-6">
@@ -43,26 +39,103 @@
             </a>
         </div>                                        
         <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
-            <div class="card-body">
-
+            <div class="card-body">                
+                
                 <table class="table table-bordered table-sm">                                         
-                    <tbody>
-                        @foreach ($arrSalud as $index => $salud)
-                            <tr>                                                        
-                                <td>{{ $salud->nombre }}</td>                                
-                                <td>
-                                    <select searchable="Buscar aqui" class="mdb-select" id="{{str_replace(' ', '_', $salud->nombre)}}">
-                                            <option value="" selected>Ninguna</option>
-                                        @foreach(explode(',', $salud->descripcion ) as $info) 
-                                            <option value="{{$info}}" >{{$info}}</option>
-                                        @endforeach                                            
-                                    </select>
-                                </td>                                
-                            </tr>                                                                                                    
-                        @endforeach                                                                                   
+                    <tbody>                        
+                        <tr>                                                        
+                            <td>Columna debido a</td>
+                            <td>
+                                {!! Form::select('slColumna', $lista->pluckCatalogoByData('LES'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slColumna',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pie izquierdo debido a</td>
+                            <td>
+                                {!! Form::select('slPieIzquierdo', $lista->pluckCatalogoByData('LES'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slPieIzquierdo',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pie derecho debido a</td>
+                            <td>
+                                {!! Form::select('slPieDerecho', $lista->pluckCatalogoByData('LES'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slPieDerecho',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mano izquierda debido a</td>
+                            <td>
+                                {!! Form::select('slManoIzquierda', $lista->pluckCatalogoByData('LES'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slManoIzquierda',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mano derecha debido a</td>
+                            <td>
+                                {!! Form::select('slManoDerecha', $lista->pluckCatalogoByData('LES'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slManoDerecha',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pierna izquierda debido a</td>
+                            <td>
+                                {!! Form::select('slPiernaIzquierda', $lista->pluckCatalogoByData('LES'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slPiernaIzquierda',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pierna derecha debido a</td>
+                            <td>
+                                {!! Form::select('slPiernaDerecha', $lista->pluckCatalogoByData('LES'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slPiernaDerecha',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Brazo izquierdo debido a</td>
+                            <td>
+                                {!! Form::select('slBrazoIzquierdo', $lista->pluckCatalogoByData('LES'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slBrazoIzquierdo',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Brazo derecho debido a</td>
+                            <td>
+                                {!! Form::select('slBrazoDerecho', $lista->pluckCatalogoByData('LES'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slBrazoDerecho',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>
                     </tbody>                                                                                    
                 </table>
-              
+
             </div>
         </div>
     </div>
@@ -82,12 +155,13 @@
                     <tbody>                                                
                         <tr>                                                        
                             <td>Habla</td>
-                            <td>
-                                <select searchable="Buscar aqui" class="mdb-select" id="habla">
-                                    <option value="">Ninguna</option>
-                                    <option value="Tiene defecto">Tiene defecto</option>
-                                    <option value="Mudo">Mudo</option>
-                                </select>
+                            <td>                                    
+                                {!! Form::select('slHabla', $lista->pluckCatalogoByData('DFM'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slHabla',
+                                    'onchange'=>'',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
                             </td>                                                                                    
                         </tr>                                                                                                                                                                            
                     </tbody>                                                                                    
@@ -107,20 +181,29 @@
         <div id="collapseOido" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
             <div class="card-body">
                 <table class="table table-bordered table-sm">                                         
-                    <tbody>
-                        @foreach ($arrOido as $index => $oido)
-                            <tr>                                                        
-                                <td>{{ $oido->nombre }}</td>
-                                <td>
-                                    <select searchable="Buscar aqui" class="mdb-select" id="{{str_replace(' ', '_', $oido->nombre)}}">
-                                            <option value="" selected>Ninguna</option>
-                                        @foreach(explode(',', $oido->descripcion ) as $info) 
-                                            <option value="{{$info}}" >{{$info}}</option>
-                                        @endforeach                                            
-                                    </select>
-                                </td>                                
-                            </tr>                                                                                                    
-                        @endforeach                                                                                   
+                    <tbody>                        
+                        <tr>                                                        
+                            <td>Oido Izquierdo</td>
+                            <td>
+                                {!! Form::select('slOidoIzquierdo', $lista->pluckCatalogoByData('DFS'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slOidoIzquierdo',
+                                    'onchange'=>'',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Oido Derecho</td>
+                            <td>
+                                {!! Form::select('slOidoDerecho', $lista->pluckCatalogoByData('DFS'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slOidoDerecho',
+                                    'onchange'=>'',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>                        
                     </tbody>                                                                                    
                 </table>
             </div>
@@ -136,22 +219,31 @@
             </a>
         </div>                                        
         <div id="collapseVista" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
-            <div class="card-body">
+            <div class="card-body">                
                 <table class="table table-bordered table-sm">                                         
-                    <tbody>
-                        @foreach ($arrOjo as $index => $vista)
-                            <tr>                                                        
-                                <td>{{ $vista->nombre }}</td>
-                                <td>
-                                    <select searchable="Buscar aqui" class="mdb-select" id="{{str_replace(' ', '_', $vista->nombre)}}">
-                                            <option value="" selected>Ninguna</option>
-                                        @foreach(explode(',', $vista->descripcion ) as $info) 
-                                            <option value="{{$info}}" >{{$info}}</option>
-                                        @endforeach                                            
-                                    </select>
-                                </td>
-                            </tr>                                                                                                    
-                        @endforeach                                                                                   
+                    <tbody>                        
+                        <tr>                                                        
+                            <td>Ojo Izquierdo</td>
+                            <td>
+                                {!! Form::select('slOjoIzquierdo', $lista->pluckCatalogoByData('DFC'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slOjoIzquierdo',
+                                    'onchange'=>'',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>
+                        <tr>    
+                            <td>Ojo Derecho</td>
+                            <td>
+                                {!! Form::select('slOjoDerecho', $lista->pluckCatalogoByData('DFC'), '' , [
+                                    'placeholder' => 'Seleccione...',                                    
+                                    'id'=>'slOjoDerecho',
+                                    'onchange'=>'',                                    
+                                    "class"=>"mdb-select colorful-select dropdown-primary"]
+                                ) !!}
+                            </td>
+                        </tr>                        
                     </tbody>                                                                                    
                 </table>
             </div>

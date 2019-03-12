@@ -53,8 +53,7 @@
                 <div class="">
                     <input type="file" id="fileFoto" style="display:none">
                     <div class="md-form form-sm">
-                        <select name="slSexo" id="slSexo" class="mdb-select colorful-select dropdown-primary">
-                            <option value=""></option>
+                        <select name="slSexo" id="slSexo" placeholder="Seleccione..." class="mdb-select colorful-select dropdown-primary">                                
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
                         </select>
@@ -74,8 +73,8 @@
                 </div>    
                 <div class="col-md-6">
                     <div class="md-form form-sm">                                                                             
-                        {!! Form::select('grupo',$lista->getGrupos()  , null , [
-                            'placeholder' => 'Grupo...',
+                        {!! Form::select('grupo',$lista->getGrupos()  , '' , [
+                            'placeholder' => 'Seleccione...',
                             'id' => 'grupo',
                             'required',
                             'data-parsley-required-message' => 'Ciudad es requirda',

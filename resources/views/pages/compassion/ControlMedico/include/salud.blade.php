@@ -34,26 +34,7 @@
         </div>                                        
         <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
             <div class="card-body">
-                <table class="table table-bordered table-sm">                                         
-                    <tbody>
-                        @foreach ($arrSalud as $index => $salud)
-                            <tr>                                                        
-                                <td>{{ $salud->nombre }}</td>
-                                <td>{{ $salud->descripcion }}</td>                                                    
-                                <td scope="row">
-                                    <div class="switch">
-                                        <label>
-                                            No
-                                            <input class="chkCompassion" name="chkLesion" id="{{$salud->id}}" value="{{$salud->id}}" type="checkbox">
-                                            <span class="lever"></span>
-                                            Si
-                                        </label>
-                                    </div>                                                                
-                                </td>
-                            </tr>                                                                                                    
-                        @endforeach                                                                                   
-                    </tbody>                                                                                    
-                </table>
+               
             </div>
         </div>
     </div>
@@ -100,26 +81,7 @@
         </div>                                        
         <div id="collapseOido" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
             <div class="card-body">
-                <table class="table table-bordered table-sm">                                         
-                    <tbody>
-                        @foreach ($arrOido as $index => $oido)
-                            <tr>                                                        
-                                <td>{{ $oido->nombre }}</td>
-                                <td>{{ $oido->descripcion }}</td>                                                    
-                                <th scope="row">
-                                    <div class="switch">
-                                        <label>
-                                            No
-                                            <input class="chkCompassion" name="chkOido" value="{{$oido->id}}" id="{{$oido->id}}" type="checkbox">
-                                            <span class="lever"></span>
-                                            Si
-                                        </label>
-                                    </div>                                                                
-                                </th>
-                            </tr>                                                                                                    
-                        @endforeach                                                                                   
-                    </tbody>                                                                                    
-                </table>
+                
             </div>
         </div>
     </div>
@@ -134,26 +96,7 @@
         </div>                                        
         <div id="collapseVista" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
             <div class="card-body">
-                <table class="table table-bordered table-sm">                                         
-                    <tbody>
-                        @foreach ($arrOjo as $index => $vista)
-                            <tr>                                                        
-                                <td>{{ $vista->nombre }}</td>
-                                <td>{{ $vista->descripcion }}</td>                                                    
-                                <th scope="row">
-                                    <div class="switch">
-                                        <label>
-                                            No
-                                            <input class="chkCompassion" name="chkVista" id="{{$vista->id}}" value="{{$vista->id}}"  type="checkbox">
-                                            <span class="lever"></span>
-                                            Si
-                                        </label>
-                                    </div>                                                                
-                                </th>
-                            </tr>                                                                                                    
-                        @endforeach                                                                                   
-                    </tbody>                                                                                    
-                </table>
+                
             </div>
         </div>
     </div>

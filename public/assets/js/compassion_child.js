@@ -68,6 +68,10 @@ $(document).ready(function() {
     $( "#apellidom" ).keyup(function() {        
         $("#lblapellido2").html($(this).val());        
     });
+
+    $('#hermanosCompassion').tagsinput({
+        tagClass: 'badge badge-info',                    
+    });
     
 });
 
@@ -85,10 +89,9 @@ function cargarDatatable(){
             
             columns: [                                                         
                 {data: 'codigo', name: 'codigo',title:'Codigo' },
-                {data: 'nombreComun', name: 'nombreComun',title:'Nombre Comun' },
-                {data: 'primerNombre', name: 'primerNombre',title:'Nombre' },
-                {data: 'apellidoPaterno', name: 'apellidoPaterno',title:'Apellido' },                                   
-                {data: "fechaNacimiento",title:'Fec. Nacimiento',"render": function(data, type, row, meta){                                                                          
+                {data: 'nombre_comun', name: 'nombre_comun',title:'Nombre Comun' },
+                {data: 'nombrecompleto', name: 'nombrecompleto',title:'Nombre Completo' },                
+                {data: "fecha_nacimiento",title:'Fec. Nacimiento',"render": function(data, type, row, meta){                                                                          
                     return formatoDate(data)}
                 },
                 {data: "sexo",title:'Sexo',"render": function(data, type, row, meta){                                                                          
@@ -208,102 +211,84 @@ function cargaChild(codigo){
         data: { codigo: codigo },
         success: function( response ){             
             if (continuaSession(response)) {                            
-                $("#codigo").val(response.data.codigo).change();        
-                $("#fechaNacimiento").val(response.data.fechaNacimiento).change();
-                $("#primerNombre").val(response.data.primerNombre).change();
-                $("#segundoNombre").val(response.data.segundoNombre).change();
-                $("#apellidop").val(response.data.apellidoPaterno).change();
-                $("#apellidom").val(response.data.apellidoMaterno).change();
-                $("#nombrecomun").val(response.data.nombreComun).change();
+                $("#codigo").val(response.data.codigo).change();                
+                fecNacimiento = formatoDate(response.data.fecha_nacimiento);
+                $("#fechaNacimiento").val(fecNacimiento).change();
+                $("#primerNombre").val(response.data.primer_nombre).change();
+                $("#segundoNombre").val(response.data.segundo_nombre).change();
+                $("#apellidop").val(response.data.apellido_paterno).change();
+                $("#apellidom").val(response.data.apellido_materno).change();
+                $("#nombrecomun").val(response.data.nombre_comun).change();
                 $("#domicilio").val(response.data.domicilio).change();                    
-                $("#razonNoAsiste").val(response.data.razonnonsiste).change();                    
-                $("#mejorMateria").val(response.data.mejormateria).change();                    
-                $("#numeroHijos").val(response.data.numerohijos).change();
-                $("#numeroHijas").val(response.data.numerohijas).change();
+                $("#razonNoAsiste").val(response.data.razon_no_asiste).change();                    
+                $("#mejorMateria").val(response.data.mejor_materia).change();                    
+                $("#numeroHijos").val(response.data.numero_hijos).change();
+                $("#numeroHijas").val(response.data.numero_hijas).change();
                 $("#detalle").val(response.data.detalle).change();                    
-                $("#grupo").val(response.data.grupo).change();                    
+                $("#grupo").val(response.data.grupo).change();
                 $("#slSexo").val(response.data.sexo).change();                    
-                                                                
-                $("input[name='rdbNiveles'][value='"+response.data.niveleducacion+"']").prop('checked', true);                                
-                $("input[name='rdbPromedios'][value='"+response.data.promedioescolar+"']").prop('checked', true);
-                $("input[name='rdbEstadoCivil'][value='"+response.data.estadocivil+"']").prop('checked', true);
+                $("#otrasActividades").val(response.data.otras_actividades).change();                    
+                $("#otrasObligaciones").val(response.data.otras_obligaciones).change();                    
+                $("#instrumentosMusicales").val(response.data.instrumentos_musicales).change();                    
+                $("#otrosPasatiempos").val(response.data.otros_pasatiempos).change();                    
+                $("#otraEnfermedad").val(response.data.otra_enfermedad).change();
+                $("#slColumna").val(response.data.columna).change();
+                $("#slPieIzquierdo").val(response.data.pie_izquierdo).change();
+                $("#slPieDerecho").val(response.data.pie_derecho).change();
+                $("#slManoIzquierda").val(response.data.mano_izquierda).change();
+                $("#slManoDerecha").val(response.data.mano_derecha).change();
+                $("#slPiernaIzquierda").val(response.data.pierna_izquierda).change();
+                $("#slPiernaDerecha").val(response.data.pierna_derecha).change();
+                $("#slBrazoIzquierdo").val(response.data.brazo_izquierdo).change();
+                $("#slBrazoDerecho").val(response.data.brazo_derecho).change();
+                $("#slHabla").val(response.data.habla).change();
+                $("#slOidoIzquierdo").val(response.data.oido_izquierdo).change();
+                $("#slOidoDerecho").val(response.data.oido_derecho).change();
+                $("#slOjoIzquierdo").val(response.data.ojo_izquierdo).change();
+                $("#slOjoDerecho").val(response.data.ojo_derecho).change();                
                 
+                setValueByName('chkActividades', jsonParse(response.data.arrActividades));
+                setValueByName('chkObligaciones', jsonParse(response.data.arrObligaciones));
+                setValueByName('chkPasatiempos', jsonParse(response.data.arrPasatiempos));
+                setValueByName('chkSalud', jsonParse(response.data.arrSalud));
+                setValueByName('chkEncargados', jsonParse(response.data.arrGuardianes));
+                setValueByName('chkActividaGuardian', jsonParse(response.data.arrActGuarMas));
+                setValueByName('chkActividaGuardiana', jsonParse(response.data.arrActGuarFem));                
+                setValueByName('chkPadreNatural', jsonParse(response.data.arrPadreNatural));
+                setValueByName('chkMadreNatural', jsonParse(response.data.arrMadreNatural));
 
-                $("input[name='rdbPadreGuardian'][value='"+response.data.padreguardian+"']").prop('checked', true);
-                $("input[name='rdbMadreGuardian'][value='"+response.data.madreguardian+"']").prop('checked', true);
+                if (response.data.asiste_escuela == "S"){
+                    $('#asisteescuela').prop('checked',true);
+                }else{
+                    $('#asisteescuela').prop('checked',false);
+                }                                
                 
-
-                //Tab - General
-                var arrActividades = JSON.parse(response.data.actividades);
-                var arrPasatiempos = JSON.parse(response.data.pasatiempos);
-                var arrObligaciones = JSON.parse(response.data.obligaciones);
-                //Tab - Salud
-                var arrEnfermedades = JSON.parse(response.data.enfermedades);
-                var arrLesion = JSON.parse(response.data.lesiones);
-                var arrOido = JSON.parse(response.data.defectooido);
-                var arrVista = JSON.parse(response.data.defectovista);
+                $("input[name='rdbNiveles'][value='"+response.data.nivel_educacion+"']").prop('checked', true);                                
+                $("input[name='rdbPromedios'][value='"+response.data.promedio_escolar+"']").prop('checked', true);
+                $("input[name='rdbEstadoCivil'][value='"+response.data.estado_civil+"']").prop('checked', true);                
+                $("input[name='rdbPadreGuardian'][value='"+response.data.padre_guardian+"']").prop('checked', true);
+                $("input[name='rdbMadreGuardian'][value='"+response.data.madre_guardian+"']").prop('checked', true);
                 
-                //Tab - Guardianes
-                var arrEncargados = JSON.parse(response.data.encargados);                    
-                var arrPadreNatural = JSON.parse(response.data.padrenatural);
-                var arrMadreNatural = JSON.parse(response.data.madrenatural);
-                var arrHermanos = JSON.parse(response.data.hermanoscompassion);                                                       
-
                 $('.mdb-select').material_select('destroy');
-                //Tab - General
-                $("#actividades").val(arrActividades);
-                $("#pasatiempos").val(arrPasatiempos);
-                $("#obligaciones").val(arrObligaciones);
-                //Tab - Salud
-                $("#enfermedades").val(arrEnfermedades);
-                //Tab - Guardianes
-                $("#encargados").val(arrEncargados);                
                 
-                $.each(arrLesion, function( index, value ) {
-                    $("input[type=checkbox][name='chkLesion'][value="+value+"]").prop("checked",true);
-                });
-
-                $.each(arrOido, function( index, value ) {
-                    $("input[type=checkbox][name='chkOido'][value="+value+"]").prop("checked",true);
+                setValueByName('chkPadreNatural', jsonParse(response.data.padre_natural));
+                setValueByName('chkMadreNatural', jsonParse(response.data.madre_natural));
+                
+                var arrHermanos = jsonParse(response.data.hermanos_compassion);
+                $.each(arrHermanos, function(index, item){
+                    $('#hermanosCompassion').tagsinput('add', item);
                 });
                 
-                $.each(arrVista, function( index, value ) {
-                    $("input[type=checkbox][name='chkVista'][value="+value+"]").prop("checked",true);
-                });
-
-                $.each(arrPadreNatural, function( index, value ) {
-                    $("input[type=checkbox][name='chkPadreNatural'][value="+value+"]").prop("checked",true);
-                });
-                
-                $.each(arrMadreNatural, function( index, value ) {
-                    $("input[type=checkbox][name='chkMadreNatural'][value="+value+"]").prop("checked",true);
-                });
-
-                $('#hermanosCompassion').material_chip({
-                    'data': arrHermanos
-                });
-                
-                
-                console.log(arrHermanos);
-                
-                if (response.data.defectohabla == "S"){
+                if (response.data.habla == "S"){
                     $('#chkHabla').prop('checked',true);
                 }else{
                     $('#chkHabla').prop('checked',false);
                 }
 
-                if (response.data.padresjuntos == "S"){
+                if (response.data.padres_juntos == "S"){
                     $('#padresJuntos').prop('checked',true);
                 }else{
                     $('#padresJuntos').prop('checked',false);
-                }
-
-                
-
-                if (response.data.asisteescuela == "S"){
-                    $('#asisteescuela').prop('checked',true);
-                }else{
-                    $('#asisteescuela').prop('checked',false);
                 }
 
                 $('.mdb-select').material_select();
@@ -312,10 +297,10 @@ function cargaChild(codigo){
                 $("#clickerImage").attr('src', "/img/compassion/" + response.data.foto +"?"+d.getTime() );                    
                 $("#imgTitle").attr('src', "/img/compassion/" + response.data.foto +"?"+d.getTime());                    
 
-                $("#lblnombre1").html(response.data.primerNombre);
-                $("#lblnombre2").html(response.data.segundoNombre);
-                $("#lblapellido1").html(response.data.apellidoPaterno);
-                $("#lblapellido2").html(response.data.apellidoMaterno);                 
+                $("#lblnombre1").html(response.data.primer_nombre);
+                $("#lblnombre2").html(response.data.segundo_nombre);
+                $("#lblapellido1").html(response.data.apellido_paterno);
+                $("#lblapellido2").html(response.data.apellido_materno);                 
                 
             }
         },error   : function ( jqXhr, json, errorThrown ){
@@ -332,6 +317,12 @@ function limpiarModal(){
     $("#primerNombre").val('');
     $("#segundoNombre").val('');
     $("#apellidop").val('');
+    $("#otrasActividades").val('');
+    $("#otrasObligaciones").val('');
+    $("#instrumentosMusicales").val('');
+    $("#otrosPasatiempos").val('');
+    $("#otraEnfermedad").val('');
+    $('select').val('');    
     $("#apellidom").val('');
     $("#nombrecomun").val('');
     $("#domicilio").val('');
@@ -351,14 +342,15 @@ function limpiarModal(){
     $("#grupo").val('');
     $("#tab-General").click();
     
+    $('#hermanosCompassion').tagsinput('removeAll');
+
     $('#asisteescuela').prop('checked',false);
     d = new Date();                    
     $("#clickerImage").attr('src', "/img/compassion/child.png?"+d.getTime());              
     $("#imgTitle").attr('src', "/img/compassion/child.png?"+d.getTime());                  
-    $('.lblNombre').html('')
-    
+    $('.lblNombre').html('')    
     $('.mdb-select').material_select();
-        
+    
 }
 
 function formaEditCard(){
@@ -384,10 +376,10 @@ function addCard(data){
         <div class="card-body">                                    
             <img class ="card-image" src="/img/compassion/${data.foto +"?"+d.getTime()}"  alt="photo">                                                            
             <div class="card-table">
-                <p class="card-text"><strong>${data.nombreComun}<a href="#" onclick="cargaChild('${data.codigo}');" style="display:none;"> <span class="fa fa-pencil editCard"></span> </a></strong></p>
-                <p class="card-text">${data.primerNombre} ${data.segundoNombre}
-                <br>${data.apellidoPaterno} ${data.apellidoMaterno}                
-                <br>${formatoDate(data.fechaNacimiento)}
+                <p class="card-text"><strong>${data.nombre_comun}<a href="#" onclick="cargaChild('${data.codigo}');" style="display:none;"> <span class="fa fa-pencil editCard"></span> </a></strong></p>
+                <p class="card-text">${data.primer_nombre} ${data.segundo_nombre}
+                <br>${data.apellido_paterno} ${data.apellido_materno}                
+                <br>${data.fecha_nacimiento}
                 <br>${data.codigo}</p>                
             </div>                                
         </div>
@@ -413,12 +405,11 @@ function validarChild(){
     AdicionaValidacion('apellidom', 'texto','Apellido Materno: Caracteres invalidos');    
     AdicionaValidacion('nombrecomun', 'req','Nombre Comun es requerido');
     AdicionaValidacion('nombrecomun', 'texto','Nombre Comun: Caracteres invalidos');    
-    AdicionaValidacion('domicilio', 'req','Domicilio es requerido');
-    AdicionaValidacion('domicilio', 'alnumhyphen');
+    AdicionaValidacion('domicilio', 'req','Domicilio es requerido');        
     
-    AdicionaValidacion('actividades', 'req','Actividades son requerido');
-    AdicionaValidacion('obligaciones', 'req','Obligaciones son requerido');
-    AdicionaValidacion('pasatiempos', 'req','Pasatiempos son requeridos');
+    //AdicionaValidacion('actividades', 'req','Actividades son requerido');
+    //AdicionaValidacion('obligaciones', 'req','Obligaciones son requerido');
+    //AdicionaValidacion('pasatiempos', 'req','Pasatiempos son requeridos');
     AdicionaValidacion('grupo', 'req','Grupo es requerido');    
     AdicionaValidacion('slSexo', 'req','Sexo es requerido');
     
@@ -447,75 +438,83 @@ function grabarDatos(){
             return false;
         }
         
-        var arrLesion = [];
-        var arrOido = [];
-        var arrVista = [];        
-        var arrPadreNatural = [];        
-        var arrMadreNatural = [];    
-        
-        $("[name='chkLesion']:checked").each(function () {
-            arrLesion.push($(this).val());
-        });
-        
-        $("[name='chkOido']:checked").each(function () {
-            arrOido.push($(this).val());
-        });
-
-        $("[name='chkVista']:checked").each(function () {
-            arrVista.push($(this).val());
-        });
-
-        $("[name='chkPadreNatural']:checked").each(function () {
-            arrPadreNatural.push($(this).val());
-        });
-        
-        $("[name='chkMadreNatural']:checked").each(function () {
-            arrMadreNatural.push($(this).val());
-        });        
-
         arrDatos = {
+            //DATOS GENERALES
             codigo : $("#codigo").val(),            
             sexo : $("#slSexo").val(),
-            fechaNacimiento : $("#fechaNacimiento").val(),
-            primerNombre : $("#primerNombre").val(),
-            segundoNombre : $("#segundoNombre").val(),
-            apellidoPaterno : $("#apellidop").val(),
-            apellidoMaterno : $("#apellidom").val(),            
-            nombreComun : $("#nombrecomun").val(),
+            fecha_nacimiento : $("#fechaNacimiento").val(),
+            primer_nombre : $("#primerNombre").val(),
+            segundo_nombre : $("#segundoNombre").val(),
+            apellido_paterno : $("#apellidop").val(),
+            apellido_materno : $("#apellidom").val(),            
+            nombre_comun : $("#nombrecomun").val(),
             domicilio : $("#domicilio").val(),
-            actividades : $("#actividades").val() || [],
-            obligaciones : $("#obligaciones").val() || [],
-            pasatiempos : $("#pasatiempos").val() || [],
-            enfermedades : $("#enfermedades").val() || [],
-            lesiones: arrLesion,
-            defectohabla : ($('#chkHabla').is(':checked') == true ? "S" : "N" ),
-            defectooido: arrOido,
-            defectovista: arrVista,
-            asisteescuela : ($('#asisteescuela').is(':checked') == true ? "S" : "N" ),
-            razonnonsiste : $("#razonNoAsiste").val(),
-            niveleducacion : $("input[name='rdbNiveles']:checked").val(),            
-            promedioescolar : $("input[name='rdbPromedios']:checked").val(),
-            mejormateria : $("#mejorMateria").val(),
-            encargados : $("#encargados").val() || [],
-            padresjuntos : ($('#padresJuntos').is(':checked') == true ? "S" : "N" ),
-            estadocivil : $("input[name='rdbEstadoCivil']:checked").val(),
-            padrenatural : arrPadreNatural,
-            madrenatural : arrMadreNatural,
-            padreguardian : $("input[name='rdbPadreGuardian']:checked").val(),
-            madreguardian : $("input[name='rdbMadreGuardian']:checked").val(),
-            numerohijos : $("#numeroHijos").val(),
-            numerohijas : $("#numeroHijas").val(),
-            hermanoscompassion : $('#hermanosCompassion').material_chip('data'),
-            detalle : $("#detalle").val(),  
             grupo : $("#grupo").val(),  
-            file : file_data,           
-            
-        }
+            //file : file_data,            
+            otras_actividades : $("#otrasActividades").val(),            
+            otras_obligaciones : $("#otrasObligaciones").val(),            
+            instrumentos_musicales : $("#instrumentosMusicales").val(),
+            otros_pasatiempos : $("#otrosPasatiempos").val(),            
+            otra_enfermedad : $("#otraEnfermedad").val(),            
+            //Lesion, enfermedad, congenito
+            columna : $("#slColumna").val(),
+            pie_izquierdo : $("#slPieIzquierdo").val(),
+            pie_derecho : $("#slPieDerecho").val(),
+            mano_izquierda : $("#slManoIzquierda").val(),
+            mano_derecha : $("#slManoDerecha").val(),
+            pierna_izquierda : $("#slPiernaIzquierda").val(),
+            pierna_derecha : $("#slPiernaDerecha").val(),
+            brazo_izquierdo : $("#slBrazoIzquierdo").val(),
+            brazo_derecho : $("#slBrazoDerecho").val(),
+            //HABLA
+            habla : $("#slHabla").val(),
+            //OIDO
+            oido_izquierdo : $("#slOidoIzquierdo").val(),
+            oido_derecho : $("#slOidoDerecho").val(),
+            //OJO
+            ojo_izquierdo : $("#slOjoIzquierdo").val(),
+            ojo_derecho : $("#slOjoDerecho").val(),             
+            //ESTUDIOS
+            asiste_escuela : ($('#asisteescuela').is(':checked') == true ? "S" : "N" ),
+            razon_no_asiste : $("#razonNoAsiste").val(),
+            nivel_educacion : $("input[name='rdbNiveles']:checked").val(),            
+            promedio_escolar : $("input[name='rdbPromedios']:checked").val(),
+            mejor_materia : $("#mejorMateria").val(),                        
+            //PADRES NATURALES
+            padres_juntos : ($('#padresJuntos').is(':checked') == true ? "S" : "N" ),
+            estado_civil : $("input[name='rdbEstadoCivil']:checked").val(),
+            //                        
+            padre_guardian : $("input[name='rdbPadreGuardian']:checked").val(),
+            madre_guardian : $("input[name='rdbMadreGuardian']:checked").val(),            
+            numero_hijos : $("#numeroHijos").val(),
+            numero_hijas : $("#numeroHijas").val(),
+            hermanos_compassion : $('#hermanosCompassion').val() || [],            
+            detalle : $("#detalle").val(),                                  
+        }    
         
+        $arrListas = {
+            //ACTIVIDADES
+            'ACT' : getValueSelectedByName('chkActividades'),                    
+            //OBLIGACIONES
+            'OBL' : getValueSelectedByName('chkObligaciones'),
+            //PASATIEMPOS
+            'PAS' : getValueSelectedByName('chkPasatiempos'),
+            //IMPEDIMENTOS FISICOS / ENFERMEDADES
+            'S' : getValueSelectedByName('chkSalud'),
+            'GR' : getValueSelectedByName('chkEncargados'),
+            //GUARDIANES
+            'AGRM' : getValueSelectedByName('chkActividaGuardian'),
+            'AGRF' : getValueSelectedByName('chkActividaGuardiana'),
+            //PADRES NATURALES
+            'PNM' : getValueSelectedByName('chkPadreNatural'),
+            'PNF' : getValueSelectedByName('chkMadreNatural'),
+        }
+      
         var file_data = $("#fileFoto").prop("files")[0]; // Getting the properties of file from file field
         var form_data = new FormData(); // Creating object of FormData class
         form_data.append("file", file_data); // Appending parameter named file with properties of file_field to form_data
-        form_data.append("arrDatos", JSON.stringify(arrDatos)); // Adding extra parameters to form_data
+        form_data.append("arrDatos", JSON.stringify(arrDatos));
+        form_data.append("arrListas", JSON.stringify($arrListas)); 
         
 
         

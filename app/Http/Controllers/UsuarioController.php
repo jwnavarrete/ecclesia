@@ -38,13 +38,13 @@ class UsuarioController extends Controller
     {
         //$usuarios = User::all();
         $usuarios = User::select("ici_users.*",
-                    DB::raw("(SELECT nombre FROM ici_catalogo
-                    WHERE ici_users.ciudad = ici_catalogo.id
-                    and ici_catalogo.data='C') as nomCiudad")
+                    DB::raw("(SELECT nombre FROM ici_catalogo_det
+                    WHERE ici_users.ciudad = ici_catalogo_det.id
+                    and ici_catalogo_det.data='C') as nomCiudad")
                     ,
-                    DB::raw("(SELECT nombre FROM ici_catalogo
-                    WHERE ici_users.pais = ici_catalogo.id
-                    and ici_catalogo.data='P') as nomPais")
+                    DB::raw("(SELECT nombre FROM ici_catalogo_det
+                    WHERE ici_users.pais = ici_catalogo_det.id
+                    and ici_catalogo_det.data='P') as nomPais")
                     ,
                     DB::raw("(SELECT nombre FROM ici_iglesia
                     WHERE ici_users.iglesia = ici_iglesia.id
@@ -62,13 +62,13 @@ class UsuarioController extends Controller
       //$Usuarios = User::all()->toArray();
       $usuarios = array();
       $usuarios = User::select("ici_users.*",
-                    DB::raw("(SELECT nombre FROM ici_catalogo
-                    WHERE ici_users.ciudad = ici_catalogo.id
-                    and ici_catalogo.data='C') as nomCiudad")
+                    DB::raw("(SELECT nombre FROM ici_catalogo_det
+                    WHERE ici_users.ciudad = ici_catalogo_det.id
+                    and ici_catalogo_det.data='C') as nomCiudad")
                     ,
-                    DB::raw("(SELECT nombre FROM ici_catalogo
-                    WHERE ici_users.pais = ici_catalogo.id
-                    and ici_catalogo.data='P') as nomPais")
+                    DB::raw("(SELECT nombre FROM ici_catalogo_det
+                    WHERE ici_users.pais = ici_catalogo_det.id
+                    and ici_catalogo_det.data='P') as nomPais")
                     ,
                     DB::raw("(SELECT nombre FROM ici_iglesia
                     WHERE ici_users.iglesia = ici_iglesia.id

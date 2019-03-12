@@ -63,12 +63,17 @@ class Lista extends Model
     
     public function getCatalogoByData($data)
     {             
-        return Catalogo::where('data', $data)->where('estado', 'A')->get();        
+        return Catalogo::where('data', $data)->where('estado', 'A')->orderBy('nombre', 'asc')->get();                
+    }
+
+    public function chunkCatalogoByData($data)
+    {   
+        return Catalogo::where('data', $data)->where('estado', 'A')->get()->chunk(1);  
     }
     
-    public function getGuardianes()
+    public function pluckCatalogoByData($data)
     {        
-        return Catalogo::where('data', 'GUAR')->where('estado', 'A')->pluck('nombre', 'id');        
+        return Catalogo::where('data', $data)->where('estado', 'A')->pluck('nombre', 'id');        
     }
 
     public function getOptionsByData($data)

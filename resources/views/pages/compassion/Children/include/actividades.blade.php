@@ -15,19 +15,22 @@
             </a>
           </div>      
           <div id="collapseTwo1" class="collapse show" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordionEx1">
-            <div class="card-body">
-                
-                    <div class="col-lg-12">     
-                        {!! Form::select('actividades', $lista->getOptionsByData("ACT") , null , [                
-                            'required',
-                            'multiple',
-                            'id'=>"actividades",  
-                            'searchable' => 'Buscar aqui...',
-                            //'data-parsley-required-message' => 'Actividad es requirda',
-                            //'data-parsley-trigger'          => 'change focusout',
-                            "class"=>"mdb-select"]
-                        ) !!}                        
-                    </div>
+            <div class="card-body">                
+              <div class="row">
+                <div class="col-md-12">     
+                    @include('partials.elements.checkList', [ 
+                        'data' => 'ACT',
+                        'name' => 'chkActividades',
+                        'column' => '4',
+                    ])           
+                </div>
+                <div class="col-md-4">     
+                  <div class="md-form form-sm">
+                    <input type="text" id="otrasActividades" placeholder="" name="otrasActividades" class="form-control">
+                    <label for="otrasActividades" >Otras</label>  
+                  </div>
+                </div>
+              </div>
             </div>
           </div>      
         </div>
@@ -45,16 +48,12 @@
           <div id="collapseTwo21" class="collapse" role="tabpanel" aria-labelledby="headingTwo21" data-parent="#accordionEx1">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-8">
-                        {!! Form::select('obligaciones', $lista->getOptionsByData("OBLI") , null , [                
-                            'required',
-                            'multiple',
-                            'id'=>"obligaciones",  
-                            'searchable' => 'Buscar aqui...',
-                            //'data-parsley-required-message' => 'Obligacion es requirda',
-                            //'data-parsley-trigger'          => 'change focusout',
-                            "class"=>"mdb-select"]
-                        ) !!}                    
+                    <div class="col-lg-12">
+                        @include('partials.elements.checkList', [ 
+                            'data' => 'OBL',
+                            'name' => 'chkObligaciones',
+                            'column' => '4',
+                        ])
                     </div>
                     <div class="col-md-4">
                         <div class="md-form form-sm">
@@ -83,15 +82,11 @@
           <div id="collapseThree31" class="collapse" role="tabpanel" aria-labelledby="headingThree31" data-parent="#accordionEx1">
             <div class="card-body">
                 <div class="col-lg-12">     
-                    {!! Form::select('pasatiempos', $lista->getOptionsByData("PASA") , null , [                
-                        'required',
-                        'multiple',
-                        'id'=>"pasatiempos",  
-                        'searchable' => 'Buscar aqui...',
-                        //'data-parsley-required-message' => 'Pasatiempos es requirda',
-                        //'data-parsley-trigger'          => 'change focusout',
-                        "class"=>"mdb-select"]
-                    ) !!}                    
+                    @include('partials.elements.checkList', [ 
+                        'data' => 'PAS',
+                        'name' => 'chkPasatiempos',
+                        'column' => '4',
+                    ])
                 </div>
 
                 <div class="row">

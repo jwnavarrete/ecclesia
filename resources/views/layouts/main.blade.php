@@ -19,6 +19,7 @@
     <meta property="og:image:type" content="image/png">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
+    
     <link rel="stylesheet" href="{{ asset('assets/css/mdb.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/compiled.min.css') }}">
@@ -31,6 +32,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/menuSortable.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/buttons.bootstrap4.min.css') }}">          
     <link rel="stylesheet" href="{{ asset('assets/css/upload.css') }}">          
+    <link rel="stylesheet" href="{{ asset('assets/plugins/tagsinput/bootstrap-tagsinput.css') }}">          
+    
+
     {!! HTML::style('/assets/css/parsley.css') !!}
 
     @yield('head')    
@@ -82,6 +86,7 @@ src="https://code.jquery.com/jquery-3.2.1.js"
 integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
 crossorigin="anonymous"></script>
 
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <script src="/assets/js/mdb.min.js"></script>
@@ -105,6 +110,8 @@ crossorigin="anonymous"></script>
 <script src="{{ asset('assets/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('assets/js/buttons.colVis.min.js') }}"></script>
 <script src="{{ asset('assets/js/vfs_fonts.js') }}"></script>
+
+<script src="{{ asset('assets/plugins/tagsinput/bootstrap-tagsinput.js') }}"></script>
 
 @yield('footer')
 
@@ -196,6 +203,8 @@ crossorigin="anonymous"></script>
                 }
             });
     }
+
+
 </script>
 
   

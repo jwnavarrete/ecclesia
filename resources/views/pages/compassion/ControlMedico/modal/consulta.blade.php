@@ -1,9 +1,6 @@
 @php   
     use App\Models\Lista;
-    $lista = new Lista;
-    $arrSalud = $lista->getCatalogoByData("S"); 
-    $arrOido = $lista->getCatalogoByData("OIDO"); 
-    $arrOjo = $lista->getCatalogoByData("OJO");     
+    $lista = new Lista;    
     $arrNiveles = $lista->getCatalogoByData("EDU");         
     
 @endphp

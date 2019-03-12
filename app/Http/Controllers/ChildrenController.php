@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Validator;
 use App\Models\Compassion_child;
+use App\Models\Compassion_child_list;
 use App\Models\GrupoChild;
 use DB;
 
@@ -16,36 +17,14 @@ class ChildrenController extends Controller
         $this->middleware('auth:all');
     }
 
-    public function index()
-    {
-        //$usuarios = User::all();
-        $usuarios = User::select("ici_users.*",
-                    DB::raw("(SELECT nombre FROM ici_catalogo
-                    WHERE ici_users.ciudad = ici_catalogo.id
-                    and ici_catalogo.data='C') as nomCiudad")
-                    ,
-                    DB::raw("(SELECT nombre FROM ici_catalogo
-                    WHERE ici_users.pais = ici_catalogo.id
-                    and ici_catalogo.data='P') as nomPais")
-                    ,
-                    DB::raw("(SELECT nombre FROM ici_iglesia
-                    WHERE ici_users.iglesia = ici_iglesia.id
-                    ) as nomIglesia")
-                    ,
-                    DB::raw("(SELECT name FROM ici_roles
-                    WHERE ici_users.role_id = ici_roles.id
-                    ) as nomRol")
-                    )->get();        
-                    
-        $usuarios = null;
-
-        return view('pages.compassion.Children.index', ['usuarios' => $usuarios]);
+    public function index(){        
+        return view('pages.compassion.Children.index');
     }
 
     public function crudChild(Request $request){
         try{
             $arrDatos = json_decode($request->arrDatos,true);
-            
+            $arrListas = json_decode($request->arrListas,true);            
 
             if (request()->hasFile('file')) {                            
                 $file = request()->file('file');                
@@ -55,38 +34,38 @@ class ChildrenController extends Controller
                 $arrDatos['foto'] = $foto;
             }                            
                         
-            $arrDatos['fechaNacimiento'] = date('Y-m-d', strtotime($arrDatos['fechaNacimiento']));
-            
-            $actividades = $arrDatos['actividades'];
-            $arrDatos['actividades'] = json_encode($arrDatos['actividades']);
-            $arrDatos['obligaciones'] = json_encode($arrDatos['obligaciones']);
-            $arrDatos['pasatiempos'] = json_encode($arrDatos['pasatiempos']);
-            $arrDatos['enfermedades'] = json_encode($arrDatos['enfermedades']);
-            $arrDatos['lesiones'] = json_encode($arrDatos['lesiones']);
-            $arrDatos['defectooido'] = json_encode($arrDatos['defectooido']);
-            $arrDatos['defectovista'] = json_encode($arrDatos['defectovista']);
-            $arrDatos['encargados'] = json_encode($arrDatos['encargados']);
-            $arrDatos['padrenatural'] = json_encode($arrDatos['padrenatural']);
-            $arrDatos['madrenatural'] = json_encode($arrDatos['madrenatural']);
-            $arrDatos['hermanoscompassion'] = json_encode($arrDatos['hermanoscompassion']);
-            
-            $arrWhere['codigo'] = $arrDatos['codigo'];
-            
+            $arrDatos['hermanos_compassion'] = json_encode($arrDatos['hermanos_compassion']);
+            $arrDatos['fecha_nacimiento'] = date('Y-m-d', strtotime($arrDatos['fecha_nacimiento']));                                
+            $arrWhere['codigo'] = $arrDatos['codigo'];            
+
             Compassion_child::updateOrCreate($arrWhere, $arrDatos);
-            
+                        
+            foreach ($arrListas as $data => $lista) {                                
+                $this->insertDetalleChild($arrDatos['codigo'], $data, $lista);
+            }
+
             return response()->json(["message" => "" ,"estado"=>0,"message"=>"Realizado con Exito!"]);
         
         }catch (\Exception $e){
             return response()->json(["message" => "" ,"estado"=>1,"message"=>$e->getMessage()]);                       
-        }
-        //print_r($child);
-
+        }        
     }
 
-    public function insertDetalleChild($child, $data, $arrDatos){
+    public function insertDetalleChild($child, $data, $arrLista){
         try {
-            //code...
+                        
+            DB::table('ici_comp_child_list')
+                ->where('child', '=', $child)
+                ->where('data', '=', $data)
+                ->delete();
             
+            foreach ($arrLista as $key => $codigo) {                
+                $user = Compassion_child_list::create([
+                    'child' => $child,
+                    'data' => $data,
+                    'codigo' => $codigo
+                ]);                
+            }
 
         }catch (\Exception $e){
             return response()->json(["message" => "" ,"estado"=>1,"message"=>$e->getMessage()]);                       
@@ -101,6 +80,11 @@ class ChildrenController extends Controller
             }else{                
                 $arrChilds = Compassion_child::where('sexo','=',$request->filtro)->get();                            
             }            
+
+            foreach ($arrChilds as $key => $child) {           
+                $codigo = $child['codigo'];
+                $arrChilds[$key]['nombrecompleto'] = "$child[apellido_paterno]  $child[apellido_materno] $child[primer_nombre] $child[segundo_nombre]";
+            }
             
             return response()->json(["message" => "" ,"estado"=>0,"data"=>$arrChilds]);
         }catch (\Exception $e){
@@ -108,15 +92,26 @@ class ChildrenController extends Controller
         }                
     }
 
+    public function getListJson($child, $data)
+    {
+        return Compassion_child_list::where('child', $child)->where('data', $data)->pluck('codigo')->toJson();        
+    }
+
     public function getChild(Request $request)
     {
         try{
-            //print_r($request->codigo);
-            //$Childs = null;
-            //$Childs = Compassion_child::find($request->codigo);
-            $Childs = Compassion_child::get()->where('codigo','=', $request->codigo)->first();                        
-            $Childs->fechaNacimiento = date('d/m/Y', strtotime($Childs->fechaNacimiento));
             
+            $Childs = Compassion_child::get()->where('codigo','=', $request->codigo)->first();            
+            //OBETENEMOS LAS LISTAS DE CATALOGO / MARCADAS
+            $Childs->arrActividades = $this->getListJson($Childs->codigo, 'ACT');
+            $Childs->arrObligaciones = $this->getListJson($Childs->codigo, 'OBL');
+            $Childs->arrPasatiempos = $this->getListJson($Childs->codigo, 'PAS');
+            $Childs->arrSalud = $this->getListJson($Childs->codigo, 'S');
+            $Childs->arrGuardianes = $this->getListJson($Childs->codigo, 'GR');
+            $Childs->arrActGuarMas = $this->getListJson($Childs->codigo, 'AGRM');
+            $Childs->arrActGuarFem = $this->getListJson($Childs->codigo, 'AGRF');
+            $Childs->arrPadreNatural = $this->getListJson($Childs->codigo, 'PNM');
+            $Childs->arrMadreNatural = $this->getListJson($Childs->codigo, 'PNF');
 
             return response()->json(["message" => "" ,"estado"=>0,"data"=>$Childs]);
         }catch (\Exception $e){
