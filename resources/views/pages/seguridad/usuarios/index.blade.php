@@ -76,48 +76,45 @@
 <script>
 
 
-    var tblUsuario;
-    $(document).ready(function() {
+var tblUsuario;
+$(document).ready(function() {
 
-        cargarDatatable();
+    cargarDatatable();
+    
+    $('#txtBuscar').on('keyup change', function () {
+        if (tblUsuario == null){return false}
+        tblUsuario.search(this.value).draw();
+    });
+
+    $('#txtBuscar').keyup(function(e){
+        e.preventDefault();
+        if(e.which==13)buscar($(this).val());
+    })
+    
+    $('#tblUsuario tbody').on( 'click', '.btn_Editar', function () {
+        //  
+        var data = tblUsuario.row( $(this).parents('tr') ).data();
+
+        if(data == undefined) {
+            data = getDataTableResponsive(this, 'tblUsuario');
+        }
         
-        $('#txtBuscar').on('keyup change', function () {
-            if (tblUsuario == null){return false}
-            tblUsuario.search(this.value).draw();
-        });
+        $(location).attr('href', 'usuarios/'+data.id);            
+    });
 
-        $('#txtBuscar').keyup(function(e){
-            e.preventDefault();
-            if(e.which==13)buscar($(this).val());
-        })
+    $('#tblUsuario tbody').on( 'click', '.btn_Eliminar', function () {
+        var data = tblUsuario.row( $(this).parents('tr') ).data(); 
         
-        $('#tblUsuario tbody').on( 'click', '.btn_Editar', function () {
-            //  
-            var data = tblUsuario.row( $(this).parents('tr') ).data();
+        if(data == undefined) {
+            data = getDataTableResponsive(this, 'tblUsuario');
+        }
 
-            if(data == undefined) {
-                data = getDataTableResponsive(this, 'tblUsuario');
-            }
-            
-            $(location).attr('href', 'usuarios/'+data.id);            
-        });
+        var obj = {texto:"Seguro desea Eliminar este registro",
+                    callback:eliminarUsuario,
+                    data:data}
 
-        $('#tblUsuario tbody').on( 'click', '.btn_Eliminar', function () {
-            var data = tblUsuario.row( $(this).parents('tr') ).data(); 
-            
-            if(data == undefined) {
-                data = getDataTableResponsive(this, 'tblUsuario');
-            }
-
-            var obj = {texto:"Seguro desea Eliminar este registro",
-                        callback:eliminarUsuario,
-                        data:data}
-
-            eliminar(obj);
-        });
-
-
-
+        eliminar(obj);
+    });
 });
 
 function eliminar(obj){
