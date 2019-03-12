@@ -56,3 +56,10 @@ function jsonParse(data){
     }
 }
 
+function getDataTableResponsive(obj, table){
+    var selected_row = $(obj).parents('tr');
+    if (selected_row.hasClass('child')) {
+        selected_row = selected_row.prev();
+    }
+    return $("#"+table).DataTable().row(selected_row).data();
+}

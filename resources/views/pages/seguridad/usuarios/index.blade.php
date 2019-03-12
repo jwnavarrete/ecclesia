@@ -90,23 +90,25 @@
             e.preventDefault();
             if(e.which==13)buscar($(this).val());
         })
-
-        $('#btnEdit').on('click', function () {
-            if(seleccionado()){
-                var data = tblUsuario.row('tr.selected' ).data();                
-                $(location).attr('href', 'usuarios/'+data.id);
-            }
-        });
-
+        
         $('#tblUsuario tbody').on( 'click', '.btn_Editar', function () {
+            //  
             var data = tblUsuario.row( $(this).parents('tr') ).data();
-            console.log(data);
+
+            if(data == undefined) {
+                data = getDataTableResponsive(this, 'tblUsuario');
+            }
+            
             $(location).attr('href', 'usuarios/'+data.id);            
         });
 
         $('#tblUsuario tbody').on( 'click', '.btn_Eliminar', function () {
             var data = tblUsuario.row( $(this).parents('tr') ).data(); 
             
+            if(data == undefined) {
+                data = getDataTableResponsive(this, 'tblUsuario');
+            }
+
             var obj = {texto:"Seguro desea Eliminar este registro",
                         callback:eliminarUsuario,
                         data:data}
