@@ -65,8 +65,8 @@
                 <div class="card card-cascade narrower">
 
                     <section>
-
-                        {!! Form::open(['url' => url('usuarios'), 'class' => '', 'data-parsley-validate','enctype' => 'multipart/form-data' ] ) !!}
+                        <!--data-parsley-validate-->
+                        {!! Form::open(['url' => url('usuarios'), 'class' => '', '','enctype' => 'multipart/form-data' ] ) !!}
 
                             <div class="row">
                                 <div class="col-xl-3 col-md-4 mb-r">
@@ -110,9 +110,9 @@
                                                         <div class="md-form form-sm">
                                                             {!! Form::select('iglesia', $lista->getIglesia(), $usuario->iglesia , [
                                                                 'placeholder' => 'Iglesia...',
-                                                                'required',
+                                                                /*'required',
                                                                 'data-parsley-required-message' => 'Iglesia es requirda',
-                                                                'data-parsley-trigger'          => 'change focusout',
+                                                                'data-parsley-trigger'          => 'change focusout',*/
                                                                 "class"=>"mdb-select colorful-select dropdown-primary"]
                                                             ) !!}
                                                             <label  for="iglesia">Iglesia</label>
@@ -124,13 +124,13 @@
 
                                                             {!! Form::text('username', $usuario->username , [
                                                                 'class'                         => 'form-control',
-                                                                'required',
                                                                 'id'                            => 'username',
+                                                                /*'required',
                                                                 'data-parsley-required-message' => 'Usuario es requerido',
                                                                 'data-parsley-trigger'          => 'change focusout',
                                                                 'data-parsley-pattern'          => '/^[a-zA-Z]*$/',
                                                                 'data-parsley-minlength'        => '4',
-                                                                'data-parsley-maxlength'        => '32'
+                                                                'data-parsley-maxlength'        => '32'*/
                                                             ]) !!}
                                                             <label for="username" >Usuario</label>
                                                         </div>
@@ -141,13 +141,13 @@
 
                                                             {!! Form::text('first_name', $usuario->first_name , [
                                                                 'class'                         => 'form-control',
-                                                                'required',
                                                                 'id'                            => 'first_name',
+                                                                /*'required',
                                                                 'data-parsley-required-message' => 'Nombre es requerido',
                                                                 'data-parsley-trigger'          => 'change focusout',
                                                                 'data-parsley-pattern'          => '/^[A-Za-z\sáéíóú]*$/',
                                                                 'data-parsley-minlength'        => '4',
-                                                                'data-parsley-maxlength'        => '32'
+                                                                'data-parsley-maxlength'        => '32'*/
                                                             ]) !!}
                                                             <label for="first_name" >Nombres</label>
                                                         </div>
@@ -156,13 +156,13 @@
                                                         <div class="md-form form-sm">
                                                             {!! Form::text('last_name', $usuario->last_name , [
                                                                 'class'                         => 'form-control',
-                                                                'required',
                                                                 'id'                            => 'last_name',
+                                                                /*'required',
                                                                 'data-parsley-required-message' => 'Apellidos son requeridos',
                                                                 'data-parsley-trigger'          => 'change focusout',
                                                                 'data-parsley-pattern'          => '/^[A-Za-z\sáéíóúñ]*$/',
                                                                 'data-parsley-minlength'        => '4',
-                                                                'data-parsley-maxlength'        => '32'
+                                                                'data-parsley-maxlength'        => '32'*/
                                                             ]) !!}
                                                             <label for="last_name" >Apellidos</label>
                                                         </div>
@@ -175,12 +175,12 @@
                                                     <div class="col-md-3">
                                                         <div class="md-form form-sm">
                                                             {!! Form::email('email', $usuario->email, [
-                                                                'class'                         => 'form-control',
-                                                                'required',
+                                                                'class'                         => 'form-control',                                                                
                                                                 'id'                            => 'inputEmail',
+                                                                /*'required',
                                                                 'data-parsley-required-message' => 'Email is required',
                                                                 'data-parsley-trigger'          => 'change focusout',
-                                                                'data-parsley-type'             => 'email'
+                                                                'data-parsley-type'             => 'email'*/
                                                             ]) !!}
                                                             <label for="email">Email</label>
                                                         </div>
@@ -191,9 +191,9 @@
 
                                                             {!! Form::select('ciudad',$lista->getCiudades()  , $usuario->iglesia , [
                                                                 'placeholder' => 'Ciudad...',
-                                                                'required',
+                                                                /*'required',
                                                                 'data-parsley-required-message' => 'Ciudad es requirda',
-                                                                'data-parsley-trigger'          => 'change focusout',
+                                                                'data-parsley-trigger'          => 'change focusout',*/
                                                                 "class"=>"mdb-select colorful-select dropdown-primary"]
                                                             ) !!}
                                                             <label for="ciudad">Ciudad</label>
@@ -203,9 +203,9 @@
                                                             <div class="md-form form-sm">
                                                                     {!! Form::select('pais', $lista->getPaises(), $usuario->pais , [
                                                                         'placeholder' => 'Pais...',
-                                                                        'required',
+                                                                        /*'required',
                                                                         'data-parsley-required-message' => 'Pais es requirdo',
-                                                                        'data-parsley-trigger'          => 'change focusout',
+                                                                        'data-parsley-trigger'          => 'change focusout',*/
                                                                         "class"=>"mdb-select colorful-select dropdown-primary"]
                                                                     ) !!}
                                                                     <label for="pais">Pais</label>
@@ -215,9 +215,9 @@
                                                             <div class="md-form form-sm">
                                                                     {!! Form::select('role', $lista->getRoles(), $usuario->role_id , [
                                                                         'placeholder' => 'Rol...',
-                                                                        'required',
+                                                                        /*'required',
                                                                         'data-parsley-required-message' => 'Pais es requirdo',
-                                                                        'data-parsley-trigger'          => 'change focusout',
+                                                                        'data-parsley-trigger'          => 'change focusout',*/
                                                                         "class"=>"mdb-select colorful-select dropdown-primary"]
                                                                     ) !!}
                                                                     <label for="role">Rol</label>
@@ -230,13 +230,13 @@
                                                         <div class="col-md-6">
                                                             <div class="md-form form-sm">
                                                                     {!! Form::password('password', [
-                                                                        'class'                         => 'form-control',
-                                                                        'required',
+                                                                        'class'                         => 'form-control',                                                                        
                                                                         'id'                            => 'password',
+                                                                        /*'required',
                                                                         'data-parsley-required-message' => 'contraseña es obligatoria',
                                                                         'data-parsley-trigger'          => 'change focusout',
                                                                         'data-parsley-minlength'        => '6',
-                                                                        'data-parsley-maxlength'        => '20'
+                                                                        'data-parsley-maxlength'        => '20'*/
                                                                     ]) !!}
                                                                     <label for="password" >Contraseña</label>
                                                             </div>
@@ -246,14 +246,14 @@
                                                             <div class="md-form form-sm">
                                                                     {!! Form::password('password_confirm',  [
                                                                         'class'                         => 'form-control',
-                                                                        'required',
                                                                         'id'                            => 'password_confirm',
+                                                                        /*'required',
                                                                         'data-parsley-equalto'          => '#password',
                                                                         'data-parsley-equalto-message'  => 'Las contraseñas no son iguales',
                                                                         'data-parsley-required-message' => 'contraseña de confirmacion obligatoria',
                                                                         'data-parsley-trigger'          => 'change focusout',
                                                                         'data-parsley-minlength'        => '6',
-                                                                        'data-parsley-maxlength'        => '20'
+                                                                        'data-parsley-maxlength'        => '20'*/
                                                                     ]) !!}
                                                                     <label for="password_confirm" class="has-warning">Confirmar Contraseña</label>
                                                             </div>
@@ -267,15 +267,13 @@
                                                     <div class="col-md-12">
                                                         <div class="md-form form-sm">
                                                             {!! Form::textarea('direccion', $usuario->direccion , [
-                                                                'class'                         => 'md-textarea',
-                                                                //'placeholder'                   => 'Direccion',
+                                                                'class'                         => 'md-textarea',                                                                
                                                                 'required',
-                                                                'id'                            => 'direccion',
+                                                                /*'id'                            => 'direccion',
                                                                 'data-parsley-required-message' => 'direccion requerida',
-                                                                'data-parsley-trigger'          => 'change focusout',
-                                                                //'data-parsley-pattern'          => '/^[A-Za-z\sáéíóúñ]*$/',
+                                                                'data-parsley-trigger'          => 'change focusout',                                                                
                                                                 'data-parsley-minlength'        => '4',
-                                                                'data-parsley-maxlength'        => '200'
+                                                                'data-parsley-maxlength'        => '200'*/
                                                             ]) !!}
                                                             <label for="direccion" >Direccion</label>
 
