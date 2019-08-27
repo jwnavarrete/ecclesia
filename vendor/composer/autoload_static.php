@@ -377,6 +377,7 @@ class ComposerStaticInit48f88750c95846cd429ee8303f5a426f
         'App\\Models\\Catalogo' => __DIR__ . '/../..' . '/app/Models/Catalogo.php',
         'App\\Models\\Compassion_Grupos' => __DIR__ . '/../..' . '/app/Models/Compassion_Grupos.php',
         'App\\Models\\Compassion_child' => __DIR__ . '/../..' . '/app/Models/Compassion_child.php',
+        'App\\Models\\Compassion_child_list' => __DIR__ . '/../..' . '/app/Models/Compassion_child_list.php',
         'App\\Models\\Convenio' => __DIR__ . '/../..' . '/app/Models/Convenio.php',
         'App\\Models\\Cronograma_child' => __DIR__ . '/../..' . '/app/Models/Cronograma_child.php',
         'App\\Models\\Cronograma_curso' => __DIR__ . '/../..' . '/app/Models/Cronograma_curso.php',

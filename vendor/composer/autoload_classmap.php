@@ -51,6 +51,7 @@ return array(
     'App\\Models\\Catalogo' => $baseDir . '/app/Models/Catalogo.php',
     'App\\Models\\Compassion_Grupos' => $baseDir . '/app/Models/Compassion_Grupos.php',
     'App\\Models\\Compassion_child' => $baseDir . '/app/Models/Compassion_child.php',
+    'App\\Models\\Compassion_child_list' => $baseDir . '/app/Models/Compassion_child_list.php',
     'App\\Models\\Convenio' => $baseDir . '/app/Models/Convenio.php',
     'App\\Models\\Cronograma_child' => $baseDir . '/app/Models/Cronograma_child.php',
     'App\\Models\\Cronograma_curso' => $baseDir . '/app/Models/Cronograma_curso.php',
